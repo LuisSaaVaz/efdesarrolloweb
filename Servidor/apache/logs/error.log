@@ -1,0 +1,59 @@
+[Thu May 28 09:36:54.125033 2026] [ssl:warn] [pid 29368:tid 404] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu May 28 09:36:54.171103 2026] [ssl:warn] [pid 29368:tid 404] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu May 28 09:36:54.269590 2026] [mpm_winnt:notice] [pid 29368:tid 404] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Thu May 28 09:36:54.269590 2026] [mpm_winnt:notice] [pid 29368:tid 404] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Thu May 28 09:36:54.269590 2026] [core:notice] [pid 29368:tid 404] AH00094: Command line: 'c:\\users\\luissaavaz\\desktop\\servidor\\apache\\bin\\httpd.exe -d C:/Users/luissaavaz/Desktop/Servidor/apache'
+[Thu May 28 09:36:54.278240 2026] [mpm_winnt:notice] [pid 29368:tid 404] AH00418: Parent: Created child process 18380
+[Thu May 28 09:36:54.620992 2026] [ssl:warn] [pid 18380:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu May 28 09:36:54.661063 2026] [ssl:warn] [pid 18380:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Thu May 28 09:36:54.692664 2026] [mpm_winnt:notice] [pid 18380:tid 424] AH00354: Child: Starting 150 worker threads.
+[Thu May 28 10:18:55.541984 2026] [php:error] [pid 18380:tid 1920] [client ::1:49888] PHP Parse error:  syntax error, unexpected token "echo" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\uno.php on line 8
+[Thu May 28 10:21:53.791198 2026] [php:error] [pid 18380:tid 1920] [client ::1:60414] PHP Parse error:  syntax error, unexpected token "echo" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\uno.php on line 14
+[Thu May 28 10:22:02.674770 2026] [php:error] [pid 18380:tid 1912] [client ::1:57283] PHP Fatal error:  Uncaught Error: Undefined constant "num1" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\uno.php:12\nStack trace:\n#0 {main}\n  thrown in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\uno.php on line 12
+[Thu May 28 12:27:12.079737 2026] [php:error] [pid 18380:tid 1912] [client ::1:56005] PHP Parse error:  syntax error, unexpected token "echo" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 6
+[Thu May 28 12:27:43.672208 2026] [php:warn] [pid 18380:tid 1920] [client ::1:63242] PHP Warning:  Undefined array key "numero1" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 9
+[Thu May 28 12:27:43.672208 2026] [php:warn] [pid 18380:tid 1920] [client ::1:63242] PHP Warning:  Undefined array key "numero2" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 10
+[Thu May 28 12:28:05.490414 2026] [php:warn] [pid 18380:tid 1912] [client ::1:52479] PHP Warning:  Undefined array key "numero1" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 3
+[Thu May 28 12:28:05.490414 2026] [php:warn] [pid 18380:tid 1912] [client ::1:52479] PHP Warning:  Undefined array key "numero2" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 4
+[Thu May 28 12:35:14.203558 2026] [php:error] [pid 18380:tid 1920] [client ::1:61708] PHP Parse error:  syntax error, unexpected token "/" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 14
+[Thu May 28 12:35:29.196423 2026] [php:error] [pid 18380:tid 1912] [client ::1:52364] PHP Parse error:  syntax error, unexpected token "/" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 14
+[Thu May 28 12:36:29.717541 2026] [php:warn] [pid 18380:tid 1920] [client ::1:64238] PHP Warning:  Undefined array key "numero1" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 3
+[Thu May 28 12:36:29.717541 2026] [php:warn] [pid 18380:tid 1920] [client ::1:64238] PHP Warning:  Undefined array key "numero2" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\recibir.php on line 4
+[Fri May 29 09:07:29.021715 2026] [ssl:warn] [pid 19860:tid 352] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:07:29.069337 2026] [core:warn] [pid 19860:tid 352] AH00098: pid file C:/Users/luissaavaz/Desktop/Servidor/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri May 29 09:07:29.069337 2026] [ssl:warn] [pid 19860:tid 352] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:07:29.433381 2026] [mpm_winnt:notice] [pid 19860:tid 352] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Fri May 29 09:07:29.433381 2026] [mpm_winnt:notice] [pid 19860:tid 352] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Fri May 29 09:07:29.433381 2026] [core:notice] [pid 19860:tid 352] AH00094: Command line: 'c:\\users\\luissaavaz\\desktop\\servidor\\apache\\bin\\httpd.exe -d C:/Users/luissaavaz/Desktop/Servidor/apache'
+[Fri May 29 09:07:29.433381 2026] [mpm_winnt:notice] [pid 19860:tid 352] AH00418: Parent: Created child process 9936
+[Fri May 29 09:07:29.731580 2026] [ssl:warn] [pid 9936:tid 356] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:07:29.775127 2026] [ssl:warn] [pid 9936:tid 356] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:07:29.806137 2026] [mpm_winnt:notice] [pid 9936:tid 356] AH00354: Child: Starting 150 worker threads.
+[Fri May 29 09:31:32.851702 2026] [php:error] [pid 9936:tid 1916] [client ::1:54866] PHP Fatal error:  Maximum execution time of 120 seconds exceeded in C:\\Users\\luissaavaz\\Desktop\\Servidor\\phpMyAdmin\\libraries\\classes\\ErrorHandler.php on line 192
+[Fri May 29 09:32:04.732144 2026] [ssl:warn] [pid 26580:tid 368] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:32:04.772765 2026] [core:warn] [pid 26580:tid 368] AH00098: pid file C:/Users/luissaavaz/Desktop/Servidor/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri May 29 09:32:04.772765 2026] [ssl:warn] [pid 26580:tid 368] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:32:05.030118 2026] [mpm_winnt:notice] [pid 26580:tid 368] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Fri May 29 09:32:05.030118 2026] [mpm_winnt:notice] [pid 26580:tid 368] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Fri May 29 09:32:05.030118 2026] [core:notice] [pid 26580:tid 368] AH00094: Command line: 'c:\\users\\luissaavaz\\desktop\\servidor\\apache\\bin\\httpd.exe -d C:/Users/luissaavaz/Desktop/Servidor/apache'
+[Fri May 29 09:32:05.030118 2026] [mpm_winnt:notice] [pid 26580:tid 368] AH00418: Parent: Created child process 25820
+[Fri May 29 09:32:05.300058 2026] [ssl:warn] [pid 25820:tid 348] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:32:05.325911 2026] [ssl:warn] [pid 25820:tid 348] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Fri May 29 09:32:05.363067 2026] [mpm_winnt:notice] [pid 25820:tid 348] AH00354: Child: Starting 150 worker threads.
+[Fri May 29 12:35:26.701685 2026] [php:error] [pid 25820:tid 1920] [client ::1:55426] PHP Parse error:  syntax error, unexpected token "echo", expecting "," or ";" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\grabaProductos.php on line 20, referer: http://127.0.0.1:3000/
+[Mon Jun 01 09:08:32.693980 2026] [ssl:warn] [pid 8152:tid 356] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Jun 01 09:08:32.725490 2026] [core:warn] [pid 8152:tid 356] AH00098: pid file C:/Users/luissaavaz/Desktop/Servidor/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Jun 01 09:08:32.733332 2026] [ssl:warn] [pid 8152:tid 356] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Jun 01 09:08:33.000512 2026] [mpm_winnt:notice] [pid 8152:tid 356] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Mon Jun 01 09:08:33.000512 2026] [mpm_winnt:notice] [pid 8152:tid 356] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Mon Jun 01 09:08:33.000512 2026] [core:notice] [pid 8152:tid 356] AH00094: Command line: 'c:\\users\\luissaavaz\\desktop\\servidor\\apache\\bin\\httpd.exe -d C:/Users/luissaavaz/Desktop/Servidor/apache'
+[Mon Jun 01 09:08:33.003608 2026] [mpm_winnt:notice] [pid 8152:tid 356] AH00418: Parent: Created child process 19516
+[Mon Jun 01 09:08:33.253000 2026] [ssl:warn] [pid 19516:tid 388] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Jun 01 09:08:33.292818 2026] [ssl:warn] [pid 19516:tid 388] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Jun 01 09:08:33.325593 2026] [mpm_winnt:notice] [pid 19516:tid 388] AH00354: Child: Starting 150 worker threads.
+[Mon Jun 01 09:09:05.111778 2026] [php:warn] [pid 19516:tid 1924] [client ::1:54445] PHP Warning:  Undefined array key "num1" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\comprobarif.php on line 3
+[Mon Jun 01 09:09:05.111778 2026] [php:warn] [pid 19516:tid 1924] [client ::1:54445] PHP Warning:  Undefined array key "num2" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\comprobarif.php on line 4
+[Mon Jun 01 09:54:03.517715 2026] [php:error] [pid 19516:tid 1904] [client ::1:50584] script 'C:/Users/luissaavaz/Desktop/Servidor/htdocs/variables/grabaAlumnos2.php' not found or unable to stat, referer: http://127.0.0.1:3000/
+[Mon Jun 01 12:21:55.305218 2026] [php:error] [pid 19516:tid 1904] [client ::1:63925] PHP Parse error:  syntax error, unexpected token "}", expecting "," or ";" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\consultaralumnos.php on line 20
+[Mon Jun 01 12:22:58.193515 2026] [php:error] [pid 19516:tid 1904] [client ::1:64470] PHP Parse error:  syntax error, unexpected token "}", expecting "," or ";" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\consultaralumnos.php on line 20
+[Mon Jun 01 12:23:51.197264 2026] [php:error] [pid 19516:tid 1900] [client ::1:56111] PHP Parse error:  syntax error, unexpected token "}", expecting "," or ";" in C:\\Users\\luissaavaz\\Desktop\\Servidor\\htdocs\\variables\\consultaralumnos.php on line 20
