@@ -1,3 +1,20 @@
+<?php 
+    // Conectar a la DDBB
+    $con = new mysqli("10.10.10.160", "clase", "1234", "martes2");
+
+    // POST
+    if ($_POST) {
+        // Recibir datos
+        $nomalu = $_POST['nombre_alu'];
+        $pro = $_POST['provincia'];
+
+        // SQL para grabar
+        $sqlGrab = "INSERT INTO alumnos (nombre_alu, id_pro) VALUES ('$nomalu', '$pro')";
+        // Grabar
+        $con->query($sqlGrab);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,77 +25,87 @@
 <body>
     <h1>Animales</h1>
     <form method="POST">
-        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="nombre_alu" placeholder="Nombre" required>
         <br>
-        <select name="vuela">
-            <option value="1">Si</option>
-            <option value="0">No</option>
-        </select>
+        <label>
+            Provincia
+            <select name="provincia">
+                <?php 
+                    // SQL para consultar
+                    $sqlConsul = "SELECT * FROM provincias ORDER BY nombre_pro ASC";
+
+                    // Consultar
+                    $response = $con->query($sqlConsul);
+                    $rows = $response->num_rows;
+
+                    if ($rows > 0) {
+                    foreach ($response as $prov ) {
+                        $idpro = $prov["id_pro"];
+                        $nompro = $prov["nombre_pro"];
+                ?>
+                <option value="<?=$idpro?>"><?=$nompro?></option>
+                <?php
+                        }
+                    }
+                ?>
+            </select>
+        </label>
         <br>
         <br>
         <button>Enviar</button>
     </form>
-    <?php 
-        // POST
-        if ($_POST) {
-            # code...
-            $nom = $_POST['nombre'];
-            $vue = $_POST['vuela'];
-            // Conexión a la DDBB
-            $con = new mysqli("10.10.10.160", "clase", "1234", "martes2");
 
-            // SQL para grabar
-            $sqlGrab = "INSERT INTO animales (nombre, vuela, alumno) VALUES ('$nom', '$vue', 'Luis')";
-            // Grabar
-            $con->query($sqlGrab);
-        }
-    ?>
+    <br>
+    <br>
+
     <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>VUELA</th>
-            <th>ALUMNO</th>
-        </tr>
-        <?php
-            // SQL para consultar
-            $sqlConsul = "SELECT * FROM animales  ORDER BY id DESC";
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE CLI</th>
+                <th>NOMBRE PRO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                // SQL para consultar
+                $sqlConsul = "
+                    SELECT id_alu, nombre_alu, nombre_pro FROM alumnos ALU
+                        JOIN provincias PRO
+                        ON ALU.id_pro = PRO.id_pro
+                        ORDER BY id_alu DESC
+                    ";
 
-            // Consultar
-            $response = $con->query($sqlConsul);
-            $rows = $response->num_rows;
+                // Consultar
+                $response = $con->query($sqlConsul);
+                $rows = $response->num_rows;
 
-            if ($rows > 0) {
-            foreach ($response as $animal ) {
-                $id = $animal["id"];
-                $nom = $animal["nombre"];
-                $vue = ($animal["vuela"]) ? "Si" : "No" ;
-                $alu = $animal["alumno"];
+                if ($rows > 0) {
+                foreach ($response as $alumno ) {
+                    $idalu = $alumno["id_alu"];
+                    $nomalu = $alumno["nombre_alu"];
+                    $nompro = $alumno["nombre_pro"];
 
-        ?>
-
-        <tr>
-            <th><?=$id?></th>
-            <td><?=$nom?></td>
-            <td><?=$vue?></td>
-            <td><?=$alu?></td>
-        </tr>
-        <?php
-            }
-        
-            } else {
-        ?>
-        <tr>
-            <th>--</th>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-        </tr>
+            ?>
+            <tr>
+                <th><?=$idalu?></th>
+                <td><?=$nomalu?></td>
+                <td><?=$nompro?></td>
+            </tr>
+            <?php
+                }
+            
+                } else {
+            ?>
+            <tr>
+                <th>--</th>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+        </tbody>
         <?php
             }
         ?>
     </table>
-    <br>
-    <a href='./8.html'><button>Volver</button></a>
 </body>
 </html>

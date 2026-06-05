@@ -37,14 +37,16 @@
                 $ema = $alumno["email"];
                 $age = $alumno["edad"];
                 $pro = $alumno["provincia"];
+        ?>
 
-                echo "<tr>
-                    <th>$id</th>
-                    <td>$nom</td>
-                    <td>$ema</td>
-                    <td>$age</td>
-                    <td>$pro</td>
-                </tr>";
+        <tr>
+            <th><?=$id?></th>
+            <td><?=$nom?></td>
+            <td><?=$ema?></td>
+            <td><?=$age?></td>
+            <td><?=$pro?></td>
+        </tr>
+        <?php
             }
         ?>
     </table>
