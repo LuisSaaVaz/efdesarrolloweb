@@ -84,7 +84,7 @@ sub AUTOLOAD {
 
 # tie returns the object, so the value returned to require will be true.
 tie %Config, 'Config', {
-    archlibexp => 'C:\\Users\\luissaavaz\\Desktop\\Servidor\\perl\\lib',
+    archlibexp => 'C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\perl\\lib',
     archname => 'MSWin32-x64-multi-thread',
     cc => 'gcc',
     d_readlink => undef,
@@ -96,14 +96,14 @@ tie %Config, 'Config', {
     inc_version_list => '',
     intsize => '4',
     ldlibpthname => '',
-    libpth => 'C:\\Users\\luissaavaz\\Desktop\\Servidor\\c\\lib \\xampp\\c\\x86_64-w64-mingw32\\lib \\xampp\\c\\lib\\gcc\\x86_64-w64-mingw32\\8.3.0',
+    libpth => 'C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\c\\lib \\xampp\\c\\x86_64-w64-mingw32\\lib \\xampp\\c\\lib\\gcc\\x86_64-w64-mingw32\\8.3.0',
     osname => 'MSWin32',
     osvers => '10.0.19042.746',
     path_sep => ';',
-    privlibexp => 'C:\\Users\\luissaavaz\\Desktop\\Servidor\\perl\\lib',
-    scriptdir => 'C:\\Users\\luissaavaz\\Desktop\\Servidor\\perl\\bin',
-    sitearchexp => 'C:\\Users\\luissaavaz\\Desktop\\Servidor\\perl\\site\\lib',
-    sitelibexp => 'C:\\Users\\luissaavaz\\Desktop\\Servidor\\perl\\site\\lib',
+    privlibexp => 'C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\perl\\lib',
+    scriptdir => 'C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\perl\\bin',
+    sitearchexp => 'C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\perl\\site\\lib',
+    sitelibexp => 'C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\perl\\site\\lib',
     so => 'dll',
     useithreads => 'define',
     usevendorprefix => 'define',

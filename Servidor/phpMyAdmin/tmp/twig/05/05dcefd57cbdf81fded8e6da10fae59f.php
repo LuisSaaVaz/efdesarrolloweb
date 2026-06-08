@@ -115,6 +115,6 @@ echo _gettext("Bookmark this SQL query");
 
     public function getSourceContext()
     {
-        return new Source("", "sql/bookmark.twig", "C:\\Users\\luissaavaz\\Desktop\\Servidor\\phpMyAdmin\\templates\\sql\\bookmark.twig");
+        return new Source("", "sql/bookmark.twig", "C:\\Users\\luissaavaz\\Desktop\\efdesarrolloweb\\Servidor\\phpMyAdmin\\templates\\sql\\bookmark.twig");
     }
 }
