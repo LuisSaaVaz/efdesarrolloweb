@@ -7,7 +7,7 @@
     // Conectar a la DDBB
     $con = new mysqli("localhost", "root", "", "lunes8");
 
-    // SQL para grabar
+    // SQL para consultar
     $sql = "SELECT * FROM clientes WHERE email_cli = '$emae'";
 
     // Ejecutar la Conexión con el SQL guardando el resultado
