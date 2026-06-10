@@ -19,6 +19,8 @@
         // Grabar
         $con->query($sqlGrab);
 
+        mkdir("avatares/$con->insert_id", 0777, true);
+
         header("location:entrar.php");
     }
 
