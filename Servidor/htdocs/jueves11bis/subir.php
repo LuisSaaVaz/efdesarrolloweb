@@ -1,21 +1,27 @@
 <?php
     include("./conexion.php");
-    if ($_FILES) {
+
+    $sqlConsul = "SELECT DISTINCT(id_cli) FROM imagenes";
+    $residclis = $con->query($sqlConsul);
+
+    if ($_POST) {
         // Recoger las partes del archivo
+        $idform = $_POST["idcli"];
         $nomimg = $_FILES["lafoto"]["name"];
         $nomimgtemp = $_FILES["lafoto"]["tmp_name"];
-        $idform = $_POST["idcli"];
 
         // Crear una UUID
-        if($idform == "Nuevo"){
+        if ($idform == "Nuevo") {
             $idcli = uniqid();
+            $ruta = "./archivos/$idcli";
+            mkdir($ruta, 0777, true);
         } else {
-            $idcli = $idform;
+            $idcli =$idform;
+            $ruta = "./archivos/$idcli";
         }
 
         // Crear ruta
-        $ruta = "./archivos/$idcli";
-        mkdir($ruta, 0777, true);
+        
 
         // Mover el archivo a su destino
         move_uploaded_file($nomimgtemp, "$ruta/$nomimg");
@@ -49,17 +55,14 @@
     </header>
     <main>
         <form action="" method="POST" enctype="multipart/form-data" >
-            <input type="file" name="lafoto" id="">
+            <input type="file" name="lafoto" id="" required>
             <br>
             <label for="">Cliente</label>
             <select name="idcli">
                 <option>Nuevo</option>
                 <?php
-                    $sqlConsul = "SELECT DISTINCT(id_cli) FROM imagenes";
-                    $residclis = $con->query($sqlConsul);
-                    
-                    foreach ($residclis as $idcli) {
-                        $idoption = $idcli["id_cli"]
+                    foreach ($residclis as $id) {
+                        $idoption = $id["id_cli"]
                 ?>
                         <?= "<option>$idoption</option>" ?>
                 <?php
@@ -73,8 +76,8 @@
             <button>Subir</button>
         </form>
         <?php
-            if ($con->affected_rows > 0) {
-                echo "<p>Archivo $nomimg subido Correctamente</p>";
+            if ($_POST && $con->affected_rows > 0) {
+                echo "<p>Archivo $nomimg subido correctamente</p>";
             }
         ?>
     </main>

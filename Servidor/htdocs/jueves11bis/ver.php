@@ -56,9 +56,9 @@
             $sqlConsul = "SELECT id_cli, nom_ima FROM imagenes WHERE id_cli='$idselect'";
             $res = $con->query($sqlConsul);
         ?>
+        <h2>Lista de fotos de <?= $idselect ?></h2>
         <ul>
             <?php
-                echo $res->num_rows;
             if ($res->num_rows > 0) {
                 foreach ($res as $image ) {
                     $nombre = $image["nom_ima"];
@@ -69,10 +69,10 @@
             }
             ?>
         </ul>
-                <?php
-                        } else {
-                ?>
-                <?="<p>No hay imagenes</p>"?>
+            <?php
+            } else {
+            ?>
+            <?="<p>No hay imagenes</p>"?>
         <?php
                         }
             } else{
