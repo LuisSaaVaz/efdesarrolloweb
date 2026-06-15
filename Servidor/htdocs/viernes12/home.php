@@ -15,12 +15,10 @@
     $sqlConsul = "SELECT * FROM images WHERE id_cli = '$idcli' AND predeterminada = '1'";
     $res = $con->query($sqlConsul);
 
-    foreach ($res as $img) {
-        $idimg = $img["id"];
-        $nomimg = $img["name"];
-        $preimg = $img["predeterminada"];
-
-    }
+    $img = $res ->fetch_assoc();
+    $idimg = $img["id"];
+    $nomimg = $img["name"];
+    $preimg = $img["predeterminada"];
 
     $ruta = "./img/$idcli";
     $ava = "$ruta/$nomimg";
@@ -28,12 +26,17 @@
     if ($_FILES) {
         $nomava = $_FILES["avatar"]["name"];
         $nomavatmp = $_FILES["avatar"]["tmp_name"];
-        $newavatar = $_POST["newavatar"];
+        $ispre = $_POST["ispre"];
 
         // Mover el archivo a su destino
         move_uploaded_file($nomavatmp, "$ruta/$nomava");
 
-        $sqlGrab = "INSERT INTO images (name, predeterminada, id_cli) VALUES ('$nomava', '0', '$idcli')";
+        if($ispre){
+            $sqlUp = "UPDATE images SET predeterminada='0' WHERE id = '$idimg'";
+            $con->query($sqlUp);
+        }
+
+        $sqlGrab = "INSERT INTO images (name, predeterminada, id_cli) VALUES ('$nomava', '$ispre', '$idcli')";
         // Grabar
         $con->query($sqlGrab);
 
@@ -65,7 +68,7 @@
     <main>
         <form method="POST" enctype="multipart/form-data">
             <input type="file" name="avatar" required>
-            <label><input type="checkbox" name="newavatar">Definir como avatar</label>
+            <label><input type="checkbox" name="ispre">Definir como avatar</label>
 
             <button>Añadir</button>
         </form>
