@@ -322,35 +322,3 @@ form button:not(.productos button):not(.cesta button):hover {
 form button:not(.productos button):not(.cesta button):active {
     transform: scale(0.98);
 }
-
-/* --- RESERVAR ESPACIO SIN MOSTRAR BARRA HASTA EL SCROLL --- */
-
-html {
-    /* 1. Forzamos a que el espacio del scroll exista siempre en todas las páginas */
-    overflow-y: scroll;
-    
-    /* 2. Decimos al navegador que gestione las barras de forma moderna y limpia */
-    scrollbar-width: auto; 
-}
-
-/* 3. Volvemos invisible la barra por defecto en navegadores basados en Webkit (Chrome, Edge, Safari) */
-::-webkit-scrollbar {
-    width: 12px;
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    /* Al usar 'rgba' con la propiedad de sistema 'Canvas', se vuelve invisible al estar estático */
-    background-color: transparent;
-    border: 3px solid transparent;
-    border-radius: 9px;
-    background-clip: padding-box;
-}
-
-/* 4. El truco: El propio sistema operativo la pintará SOLO al hacer scroll en sistemas modernos */
-@media (pointer: fine) {
-    html {
-        scrollbar-color: rgba(0, 0, 0, 0) transparent;
-        transition: scrollbar-color 0.3s;
-    }
-}
