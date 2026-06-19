@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <button onclick="mostrar()">Mostrar</button>
+    <button onclick="ocultar()">Ocultar</button>
+    <button onclick="cambios()">Cambios</button>
+    <hr>
+    <p>Luis Saavedra</p>
+
+    <script>
+        function mostrar(){
+            // Tiempo que tarda en terminar la acción en ms
+            $("p").show(500);
+        }
+        function ocultar(){
+            $("p").hide(500);
+        }
+        function cambios(){
+            $("p").toggle(500);
+        }
+    </script>
+</body>
+</html>

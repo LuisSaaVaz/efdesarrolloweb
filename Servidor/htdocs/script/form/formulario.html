@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form action="" enctype="multipart/form-data">
+        <input type="text" name="nom" placeholder="Nombre" >
+        <textarea name="desc" id="" placeholder="Descripción"></textarea>
+        <input type="file" name="image" >
+
+        
+        <fieldset>
+            <legend>Acciones del formulario</legend>
+            <button type="button" onclick="plus_image()"><i class="fa-solid fa-plus" style="color: rgb(99, 230, 190);"></i></button>
+            <button type="submit">Enviar</button>
+        </fieldset>
+    </form>
+    <script>
+        function plus_image() {
+            var nuevoInput = "<div><input type='file'> <button type='button' onclick='delete_image(this)'><i class='fa-solid fa-trash-can' style='color: rgb(99, 230, 190);''></i></button></div>";
+
+            $("fieldset").first().before(nuevoInput);
+        }
+        function delete_image(this) {
+            this.parent().remove();
+        }
+    </script>
+</body>
+</html>

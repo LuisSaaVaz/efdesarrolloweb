@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sala de cine</h1>
+    <h2>Reservas: <span></span></h2>
+    <table>
+        
+    </table>
+
+    <script>
+        const filas = 10;
+        const columnas = 10;
+        const $tabla = $("table");
+
+        var ventas = 0;
+        $("span").text(ventas);
+
+        for (let i = 0; i < filas; i++) {
+            // Creamos la fila
+            let $tr = $("<tr></tr>");
+            
+            for (let j = 0; j < columnas; j++) {
+                // Creamos la celda con el icono y la clase 'libre'
+                let $td = $("<td><i class='fa-solid fa-couch' style='color: lime'></i></td>");
+                $tr.append($td);
+            }
+            
+            // Añadimos la fila completa a la tabla
+            $tabla.append($tr);
+        }
+
+        $("i").on("click", function(){
+            var color = $(this).css("color") == "rgb(0, 255, 0)" ? "rgb(255, 0, 0)" : "rgb(0, 255, 0)";
+            $(this).css("color", $(this).css("color", color))
+
+            if ($(this).css("color") == "rgb(255, 0, 0)") {
+                ventas -= 1;
+                $("span").text(ventas);
+            } else {
+                ventas += 1;
+                $("span").text(ventas);
+            }
+        })
+        
+    </script>
+</body>
+</html>
