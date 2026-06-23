@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Busqueda en tiempo real</h1>
+    </header>
+    <main>
+        <input type="text" placeholder="Buscar" onkeyup="encontrar()">
+        <ol></ol>
+    </main>
+
+    <script>
+        function encontrar(){
+            // Recoger lo escrito en el input
+            var texto = $("input").val(); // Variable donde guardo el value del input
+
+            // Llamar al documento php, enviar datos y recibir respuesta
+            // 1. A donde
+            // 2. Que envio
+            // 3. Funcion anonima para esperar la respuesta de php. recibe los echos del php
+            $.post(
+                "./buscar.php",
+                {busqueda: texto}, 
+                function (response) {
+                    $("ol").append().html(response)
+                }
+            )
+        }
+    </script>
+</body>
+</html>
