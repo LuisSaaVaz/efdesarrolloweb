@@ -1,0 +1,101 @@
+/* Estilos Cyberpunk - Terminal de Datos */
+body {
+    background-color: #0d0d12;
+    background-image: radial-gradient(circle at 50% 50%, #1a1a2e, #0d0d12);
+    color: #00ffcc;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    border-bottom: 2px solid #ff00ff;
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+li {
+    background: rgba(20, 20, 30, 0.8);
+    border: 2px solid #00ffcc; /* Borde más definido */
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* Eliminamos el exceso de redondeado para un look más industrial */
+    border-radius: 0; 
+    box-shadow: inset 0 0 5px #00ffcc;
+}
+
+/* Efecto al pasar el ratón */
+li:hover {
+    background: rgba(0, 255, 204, 0.15);
+    box-shadow: 0 0 15px #00ffcc, inset 0 0 10px #00ffcc;
+    transform: translateY(-5px);
+}
+
+article p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+/* Animación de parpadeo suave para el título */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 22%, 55% { opacity: 0.8; }
+}
+
+h1 { animation: flicker 3s infinite; }
+
+dialog {
+    background: #0d0d12;
+    border: 2px solid #ff00ff;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 20px #ff00ff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscurecido al abrir */
+}
+
+dialog h2 {
+    color: #00ffcc;
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+dialog button {
+    background: transparent;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+dialog button:hover {
+    background: #00ffcc;
+    color: #0d0d12;
+}

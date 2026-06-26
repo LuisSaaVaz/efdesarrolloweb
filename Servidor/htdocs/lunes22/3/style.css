@@ -53,12 +53,6 @@ ul {
     filter: brightness(1.2);
 }
 
-/* Color cuando el asiento está libre */
-.libre { color: rgb(99, 230, 190); }
-
-/* Color cuando está ocupado */
-.ocupado { color: #e74c3c; }
-
 /* Efecto al pasar el ratón */
 .fa-couch:hover {
     transform: scale(1.2);

@@ -1,0 +1,118 @@
+/* Estilos generales */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1 { color: #2c3e50; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+
+/* Palabra secreta */
+ul.solucion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+ul.solucion li {
+    width: 45px;
+    height: 55px;
+    border-bottom: 4px solid #34495e;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2c3e50;
+}
+
+/* Imagen centrada y redondeada */
+/* Imagen completa y sin recortes */
+img {
+    width: 200px;         /* Mantén el ancho fijo que prefieras */
+    height: auto;         /* Ajusta la altura automáticamente según la proporción */
+    object-fit: contain;  /* Asegura que la imagen se vea entera sin recortar */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    display: block;
+    background-color: #fff; /* Opcional: fondo blanco si la imagen tiene transparencias */
+}
+
+/* Teclado flexible */
+h2 { font-size: 1.2rem; color: #7f8c8d; margin-top: 30px; }
+
+ul.teclado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 600px;
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+ul.teclado li {
+    background: #fff;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    padding: 12px 18px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-width: 20px;
+}
+
+ul.teclado li:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Clases de estado */
+.usada {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Dialog mejorado */
+dialog {
+    border: none;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+}
+
+dialog h2 { margin-top: 0; color: #e74c3c; }
+
+dialog button {
+    padding: 12px 25px;
+    cursor: pointer;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+dialog button:hover {
+    background: #27ae60;
+}
