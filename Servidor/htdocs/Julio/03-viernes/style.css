@@ -1,0 +1,151 @@
+:root {
+    --primary: #6366f1;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --border: #e2e8f0;
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    margin: 0; 
+    position: relative;
+}
+
+/* Layout Header */
+header {
+    background: white;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    height: 2rem;
+    button{
+        font-size: 1.5rem;
+        border: none;
+        background-color: transparent;
+    }
+}
+
+/* Aside Panel Lateral (Fuera de flujo) */
+aside {
+    position: fixed;
+    top: calc(4rem + 1px);
+    right: 0;
+    width: 300px;
+    height: calc(100vh - 4rem - 1px);
+    background: #fdfdfd;
+    border-left: 1px solid var(--border);
+    padding: 1.5rem;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    z-index: 100;
+}
+
+aside.invisible { 
+    transform: translateX(100%); 
+}
+
+/* Grid de Hoteles */
+main { 
+    padding: 2rem; 
+}
+
+.hoteles { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1.5rem; 
+    list-style: none; 
+}
+.hotel { 
+    background: var(--card-bg); 
+    padding: 1.2rem; 
+    border-radius: 12px; 
+    border: 1px solid var(--border); 
+    fieldset div{
+        display: flex;
+    }
+}
+
+/* Controladores (Layout Horizontal) */
+.controles-wrapper { 
+    display: flex; 
+    gap: 10px; 
+    margin: 15px 0; }
+.control-group { 
+    border: none; 
+    padding: 0; 
+    flex: 1;
+
+    display: flex;
+}
+.control-group legend { 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    color: #64748b; 
+    font-weight: bold; 
+    margin-bottom: 4px; 
+}
+
+/* Inputs y Botones pequeños */
+.input-noches { 
+    width: 100%; 
+    border: 1px solid var(--border); 
+    padding: 6px; 
+    border-radius: 4px; 
+    text-align: center; 
+}
+.btn-restar, .btn-sumar { 
+    border: 1px solid var(--border); 
+    background: #f1f5f9; 
+    cursor: pointer; 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+}
+.btn-reservar { 
+    width: 100%; 
+    background: var(--primary); 
+    color: white; 
+    border: none; 
+    padding: 10px; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    cursor: pointer; 
+}
+
+/* Tarjetas Aside (Sin estilo lista) */
+.reservas { padding: 0; }
+.reserva-item { 
+    list-style: none; 
+    margin-bottom: 1rem; 
+}
+.card-reserva { 
+    background: white; 
+    padding: 1rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--border); 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+}
+.card-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+.btn-eliminar { 
+    background: #fee2e2; 
+    color: #ef4444; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 5px 8px; 
+    cursor: pointer; 
+}
+.card-body p { 
+    margin: 5px 0; 
+    font-size: 0.9rem; 
+    color: #64748b; 
+}

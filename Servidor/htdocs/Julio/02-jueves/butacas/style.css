@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    height: 4rem;
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+}
+
+main{
+    min-height: calc(100vh - 4rem);
+    display: flex;
+
+    section{
+        width: 80%;
+        ul{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            
+            li{
+                width: 100%;
+                height: 4rem;
+    
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    aside{
+        width: 20%;
+        border-left: 2px dashed black;
+        
+    }
+
+    .invisible{
+        visibility: hidden;
+    }
+}
+
+
+ul {
+    list-style: none;
+}
+
+li{
+    cursor:pointer;
+}
+
+i {
+    font-size: 3rem;
+    position: relative; /* Clave: define el contexto para el p */
+    display: inline-flex; /* Para que no ocupe todo el ancho */
+    justify-content: center;
+    align-items: center; /* Alineación vertical */
+    margin: 10px;
+    p {
+        color: white;
+        position: absolute; /* Saca el número del flujo normal */
+        font-size: 1rem;
+        margin: 0;
+        /* Ajusta estos valores si el número no queda perfectamente centrado */
+        top: 35%; 
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centrado absoluto */
+        pointer-events: none; /* Para que no interfiera con clics en la butaca */
+    }
+}
+
+.reservada i {
+    color: red !important;
+}

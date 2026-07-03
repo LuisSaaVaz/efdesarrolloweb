@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Examen</h1>
+    </header>
+    <main>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="number" name="edad" placeholder="Edad" min="0" max="100">
+        <label>Sexo</label>
+        <select name="sexo">
+            <option value="mucho">Mucho</option>
+            <option value="poco">Poco</option>
+            <option value="nada">Nada</option>
+        </select>
+        <button>Enviar</button>
+        <p></p>
+    </main>
+
+    <dialog id="modalError">
+        <p>Por favor, rellena todos los campos.</p>
+        <button id="cerrarModal" type="button">Cerrar</button>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>

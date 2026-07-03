@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Funciones</h1>
+    </header>
+    <main>
+        <input type="text">
+        <br>
+        <input type="password">
+        <br>
+        <input type="checkbox">
+        <br>
+        <input type="color">
+        <br>
+        <input type="date">
+        <br>
+        <input type="email">
+        <br>
+        <input type="file">
+        <br>
+        <input type="radio">
+        <br>
+        <input type="range">
+        <br>
+    </main>
+
+    <script>
+        function comprobar(){
+            $("input").each(function(){
+                var tipo = $(this).attr("type")
+                if (tipo == "text") {
+                    $(this).prop("readonly", true)
+                }
+            })
+        }
+        function comprobarLight(){
+            $("input[type=text]").prop("readonly", true)
+        }
+        comprobarLight()
+    </script>
+</body>
+</html>

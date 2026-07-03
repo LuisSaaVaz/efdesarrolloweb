@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisiones</title>
+
+    <style>
+        div{
+            float: left;
+            width: 100%;
+        }
+        #general{
+            width: 80%;
+            height: 600px;
+            margin: 5% 10%;
+        }
+        #arriba{
+            background-color: red;
+            height: 150px;
+            .menu {
+                background-color: purple;
+                width: 33.333%;
+                height: 100%;
+            }
+        }
+        #abajo{
+            background-color: green;
+            height: 450px;
+            #izquierda{
+                background-color: yellow;
+                width: 20%;
+                height: 100%;
+                
+                .opciones {
+                    background-color: orange;
+                    width: 100%;
+                    height: 100px;
+                    margin-top: 50px;
+                }
+            }
+            #derecha{
+                background-color: blue;
+                width: 80%;
+                height: 100%;
+                
+                .central {
+                    background-color: grey;
+                    width: 80%;
+                    height: 300px;
+                    margin-top: 75px;
+                    margin-left: 10%;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Divisiones</h1>
+    </header>
+    <div id="general">
+        <div id="arriba">
+            <div class="menu">Uno</div>
+            <div class="menu">Dos</div>
+            <div class="menu">Tres</div>
+        </div>
+        <div id="abajo">
+            <div id="izquierda">
+                <div class="opciones">Uno</div>
+                <div class="opciones">Dos</div>
+                <div class="opciones">Tres</div>
+            </div>
+            <div id="derecha">
+                <div class="central">Contenido</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
