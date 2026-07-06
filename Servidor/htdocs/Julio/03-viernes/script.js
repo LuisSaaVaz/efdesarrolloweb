@@ -177,6 +177,10 @@ $(".btn-reservar").on("click", function(){
     actualizarListaReservas();
 })
 
+$(".btn-eliminar").on("click", function(){
+    
+})
+
 function actualizarListaReservas() {
     var reservasHTML = "";
 
@@ -185,7 +189,7 @@ function actualizarListaReservas() {
         // Calculamos el total aquí mismo o usamos la propiedad si ya la calculaste
         var total = res.personas * res.noches * res.precio;
 
-        reservasHTML += '<li class="reserva-item">' +
+        reservasHTML += '<li id="res-' + res.id + '" class="reserva-item">' +
             '<article class="card-reserva">' +
                 '<header class="card-header">' +
                     '<strong>' + res.nombre + '</strong>' +
