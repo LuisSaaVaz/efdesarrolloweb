@@ -70,7 +70,7 @@
             </div>
         </nav>
     </header>
-    <main class="container m-0">
+    <main class="">
         <h1>Tienda</h1>
         <ul class="row">
             <?= $list ?>
