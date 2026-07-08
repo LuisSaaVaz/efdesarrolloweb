@@ -1,32 +1,39 @@
 <?php
     session_start();
+
     include("./createDDBB.php");
-    
     crear();
+
+    if($_SESSION['logged']){
+        header("location:fichar.php");
+        exit();
+    }
+    
     
     // Procesar login
-    function login($con) {
-        // Iniciamos sesión si no está iniciada
-        if (session_status() === PHP_SESSION_NONE) { session_start(); }
-        
+    function login() {       
+        include("./conexion.php"); 
         $email = $_POST['email'];
         $password_input = $_POST['password'];
 
-        // Consulta segura
-        $stmt = $con->prepare("SELECT * FROM users WHERE email = ? AND role = 'teacher'");
+        // Consulta segura con statements para evitar inyección SQL
+        $sqlCon = "SELECT * FROM users WHERE email = ? AND role = 'teacher'";
+        $stmt = $con->prepare($sqlCon);
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        $resultado = $stmt->get_result();
+        $res = $stmt->get_result();
 
-        if ($resultado->num_rows == 1) {
-            $user = $resultado->fetch_assoc();
+        if ($res->num_rows == 1) {
+            $user = $res->fetch_assoc();
             
             // Verificamos el hash de la contraseña
             if (password_verify($password_input, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['nombre'] = $user['nombre'];
-                $_SESSION['apellidos'] = $user['apellidos'];
-                $_SESSION['dni'] = $user['dni'];
+                $_SESSION['logged'] = [
+                    'id'        => $user['id'],
+                    'nombre'    => $user['nombre'],
+                    'apellidos' => $user['apellidos'],
+                    'dni'       => $user['dni']
+                ];
                 
                 header("location:fichar.php");
                 exit();
