@@ -18,12 +18,12 @@
                     data-apellidos='{$user['apellidos_per']}' 
                     data-email='{$user['email_per']}' 
                     data-bs-toggle='modal' data-bs-target='#modalEditar'>
-                    Editar
+                    <i class='fa-solid fa-user-pen' style='color: rgb(255, 255, 255);'></i>
                 </button>
                 <button class='btn btn-sm btn-danger delete-btn' 
                     data-id='{$user['id_per']}' 
                     data-bs-toggle='modal' data-bs-target='#modalBorrar'>
-                    Borrar
+                    <i class='fa-solid fa-trash'></i>
                 </button>
             </td>
         </tr>";
@@ -45,6 +45,8 @@
     ';
 
     $script = "<script>
+        $('main').removeClass('align-items-center');
+        $('main').addClass('align-items-start');
         $(document).ready(function() {
             $('main').html(`$table`);
         });
