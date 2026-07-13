@@ -1,0 +1,43 @@
+/* 1. Definimos la altura fija que va a tener tu barra de navegación */
+:root {
+  --altura-menu: 80px;
+}
+
+/* 2. El body deja exactamente ese hueco arriba para que el main no se cuele */
+main {
+  margin: 0;
+  /* margin-top: var(--altura-menu); */
+}
+
+/* 3. Ajustamos el nav para que tenga esa altura exacta sin que se estire el fondo */
+header {
+  height: var(--altura-menu);
+  min-height: var(--altura-menu);
+
+  .navbar {
+    height: var(--altura-menu);
+    min-height: var(--altura-menu);
+  }
+
+  .navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-size: 1.15rem;
+    /* Texto más grande */
+    font-weight: 700;
+    /* Negrita fuerte */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Efecto sutil al pasar el ratón por encima de los enlaces */
+  .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  /* 5. Icono de la cesta más grande */
+  .navbar-brand i {
+    font-size: 2rem !important;
+    /* Tamaño aumentado notablemente */
+    color: #ffffff !important;
+  }
+}

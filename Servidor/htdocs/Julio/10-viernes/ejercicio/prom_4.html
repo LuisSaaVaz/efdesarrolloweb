@@ -10,15 +10,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="fixed-top">
     <header>
-        <h1>Productos</h1>
+        <nav class="navbar navbar-expand-lg fixed-top bg-primary">
+            <!-- Añadimos h-100 y align-items-center para centrar todo verticalmente en los 80px -->
+            <div class="container-fluid h-100 align-items-center">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse h-100 align-items-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Comprados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Vendidos</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Tu buscador con floating label sin añadidos -->
+                    <div class="form-floating d-flex align-items-center" role="search">
+                        <input type="search" class="form-control bg-white" id="floatingInput" placeholder="Search">
+                        <label for="floatingInput" class="text-muted">Search...</label>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
         <section id="top5-productos">
-            <div id="carouselExampleCaptions" class="carousel slide ">
+            <div id="carouselExampleCaptions" class="carousel slide d-none">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -38,8 +67,8 @@
                 </button>
             </div>
         </section>
-        <section id="all-productos">
-            <ul class="row p-4 m-0 justify-content-center align-items-center gap-4" id="lista-productos"></ul>
+        <section id="all-productos" >
+            <ul class="row p-5 m-0 d-flex justify-content-center gap-5" id="lista-productos"></ul>
         </section>
     </main>
 
@@ -68,6 +97,8 @@
                 tipo: "carousel",
                 limite: 5
             });
+
+            $(".carousel").removeClass("d-none");
         }, 3000);
 
         // 2. Cargamos todos los productos en la lista inferior
