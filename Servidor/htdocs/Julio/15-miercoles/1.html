@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas y postres</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-basket-shopping" style="color: rgb(116, 192, 252);"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="" id="btn-bebidas">Bebidas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" id="btn-postres">Postres</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="d-flex justify-content-between gap-3 p-3">
+        <section id="formularios" class="col-6" >
+            <!-- Formulario Bebidas -->
+            <div id="form-bebidas">
+                <h3>Insertar Bebida</h3>
+                <form class="mi-formulario">
+                    <input type="hidden" name="tipo" value="bebidas">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="Nombre" required>
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="floatingTextarea" name="descripcion" placeholder="Descripción" required></textarea>
+                        <label for="floatingTextarea">Descripción</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="precio" placeholder="Precio" required>
+                        <label for="floatingInput">Precio</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Bebida</button>
+                </form>
+            </div>
+
+            <!-- Formulario Postres (Oculto al inicio) -->
+            <div id="form-postres" style="display: none;">
+                <h3>Insertar Postre</h3>
+                <form class="mi-formulario">
+                    <input type="hidden" name="tipo" value="postres">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="Nombre">
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="floatingTextarea" name="descripcion" placeholder="Descripción"></textarea>
+                        <label for="floatingTextarea">Descripción</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="precio" placeholder="Precio">
+                        <label for="floatingInput">Precio</label>
+                    </div>
+                    <button type="submit" class="btn btn-success">Guardar Postre</button>
+                </form>
+            </div>
+        </section>
+        <section id="tablas" class="col-6" >
+            <!-- Tabla Bebidas -->
+            <div id="bebidas">
+                <h3>Lista de Bebidas</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Precio</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tabla Postres (Oculto al inicio) -->
+            <div id="postres" style="display: none;">
+                <h3>Lista de Postres</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Precio</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // Manejador para el botón Bebidas
+        $("#btn-bebidas").on("click", function(e) {
+            e.preventDefault(); // Evita que la página se recargue
+            
+            // Gestionar clases activas en la navegación
+            $(".nav-link").removeClass("active");
+            $(this).addClass("active");
+
+            // Mostrar elementos de bebidas y ocultar postres
+            $("#form-bebidas, #bebidas").show();
+            $("#form-postres, #postres").hide();
+
+            mostrar("bebidas");
+        });
+
+        // Manejador para el botón Postres
+        $("#btn-postres").on("click", function(e) {
+            e.preventDefault(); // Evita que la página se recargue
+            
+            // Gestionar clases activas en la navegación
+            $(".nav-link").removeClass("active");
+            $(this).addClass("active");
+
+            // Mostrar elementos de postres y ocultar bebidas
+            $("#form-postres, #postres").show();
+            $("#form-bebidas, #bebidas").hide();
+
+            mostrar("postres");
+        });
+
+
+        // Escuchamos el evento de envío (submit) de cualquier formulario con la clase "mi-formulario"
+        $(".mi-formulario").on("submit", function(e) {
+            e.preventDefault(); // Evita que el navegador recargue la página
+
+            // 'this' hace referencia exacta al formulario concreto que el usuario acaba de enviar
+            var formulario = $(this);
+            
+            // .serialize() junta automáticamente 'tipo' y 'nombre_item' de ESE formulario
+            var datosFormulario = formulario.serialize(); 
+
+            // Enviamos los datos mediante POST a register.php
+            $.post("register.php", datosFormulario, function(respuesta) {
+                
+                // Aquí manejas la respuesta que te devuelva el archivo register.php
+                alert("Respuesta del servidor: " + respuesta);
+                
+                // Opcional: Limpiar el formulario tras el éxito
+                formulario[0].reset();
+                
+                // Obtenemos el valor del input hidden 'tipo' del formulario enviado ("bebidas" o "postres")
+                var tipoInsertado = formulario.find("input[name='tipo']").val();
+                
+                // Actualizamos únicamente la tabla que acaba de recibir el nuevo registro
+                mostrar(tipoInsertado);
+            }).fail(function() {
+                // Por si ocurre un error en el servidor (un error 500, 404, etc.)
+                alert("Ocurrió un error al enviar los datos.");
+            });
+        });
+
+        function mostrar(tabla) {
+            // Realizamos una petición GET enviando el tipo de tabla ("bebidas" o "postres")
+            $.get("search.php", { tipo: tabla }, function(datos) {
+                
+                // Seleccionamos el tbody correspondiente (#bebidas tbody o #postres tbody)
+                var tbody = $("#" + tabla + " tbody");
+                tbody.empty(); // Limpiamos las filas viejas
+
+                // Recorremos el array de objetos que nos devuelve PHP
+                datos.forEach(function(item) {
+                    // Creamos la fila dinámicamente con los datos de la BD
+                    var fila = `<tr>
+                        <td>${item.id}</td>
+                        <td>${item.nombre}</td>
+                        <td>${item.descripcion}</td>
+                        <td>${item.precio}</td>
+                    </tr>`;
+                    
+                    tbody.append(fila);
+                });
+                
+            }, "json")
+            .fail(function() {
+                console.error("Error al cargar los datos de la tabla: " + tabla);
+            });
+        }
+
+        mostrar("bebidas");
+    </script>
+</body>
+</html>
