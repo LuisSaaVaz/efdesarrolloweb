@@ -146,3 +146,132 @@
 14:05:07  [main] 	Deinitializing Modules
 14:05:07  [main] 	Deinitializing Control Panel
 
+9:08:41  [main] 	Initializing Control Panel
+9:08:41  [main] 	Windows Version:  Enterprise  64-bit
+9:08:41  [main] 	XAMPP Version: 8.2.12
+9:08:41  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:08:41  [main] 	You are not running with administrator rights! This will work for
+9:08:41  [main] 	most application stuff but whenever you do something with services
+9:08:41  [main] 	there will be a security dialogue or things will break! So think 
+9:08:41  [main] 	about running this application with administrator rights!
+9:08:41  [main] 	XAMPP Installation Directory: "c:\users\luissaavaz\desktop\efdesarrolloweb\servidor\"
+9:08:41  [main] 	Checking for prerequisites
+9:08:45  [main] 	All prerequisites found
+9:08:45  [main] 	Initializing Modules
+9:08:45  [mercury] 	Problem detected!
+9:08:45  [mercury] 	Port 25 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+9:08:45  [mercury] 	Mercury WILL NOT start without the configured ports free!
+9:08:45  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+9:08:45  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+9:08:45  [mercury] 	Problem detected!
+9:08:45  [mercury] 	Port 110 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+9:08:45  [mercury] 	Mercury WILL NOT start without the configured ports free!
+9:08:45  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+9:08:45  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+9:08:45  [mercury] 	Problem detected!
+9:08:45  [mercury] 	Port 143 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+9:08:45  [mercury] 	Mercury WILL NOT start without the configured ports free!
+9:08:45  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+9:08:45  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+9:08:45  [main] 	Starting Check-Timer
+9:08:45  [main] 	Control Panel Ready
+9:08:47  [Apache] 	Attempting to start Apache app...
+9:08:47  [Apache] 	Status change detected: running
+9:08:48  [mysql] 	Attempting to start MySQL app...
+9:08:48  [mysql] 	Status change detected: running
+14:02:25  [Apache] 	Attempting to stop Apache (PID: 13060)
+14:02:25  [Apache] 	Attempting to stop Apache (PID: 16976)
+14:02:25  [Apache] 	Status change detected: stopped
+14:02:26  [mysql] 	Attempting to stop MySQL app...
+14:02:26  [mysql] 	Status change detected: stopped
+14:02:42  [main] 	Deinitializing Modules
+14:02:42  [main] 	Deinitializing Control Panel
+
+11:54:12  [main] 	Initializing Control Panel
+11:54:12  [main] 	Windows Version:  Enterprise  64-bit
+11:54:12  [main] 	XAMPP Version: 8.2.12
+11:54:12  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+11:54:12  [main] 	You are not running with administrator rights! This will work for
+11:54:12  [main] 	most application stuff but whenever you do something with services
+11:54:12  [main] 	there will be a security dialogue or things will break! So think 
+11:54:12  [main] 	about running this application with administrator rights!
+11:54:12  [main] 	XAMPP Installation Directory: "c:\users\luissaavaz\desktop\efdesarrolloweb\servidor\"
+11:54:12  [main] 	Checking for prerequisites
+11:54:16  [main] 	All prerequisites found
+11:54:16  [main] 	Initializing Modules
+11:54:16  [mercury] 	Problem detected!
+11:54:16  [mercury] 	Port 25 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+11:54:16  [mercury] 	Mercury WILL NOT start without the configured ports free!
+11:54:16  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+11:54:16  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+11:54:16  [mercury] 	Problem detected!
+11:54:16  [mercury] 	Port 110 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+11:54:16  [mercury] 	Mercury WILL NOT start without the configured ports free!
+11:54:16  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+11:54:16  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+11:54:16  [mercury] 	Problem detected!
+11:54:16  [mercury] 	Port 143 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+11:54:16  [mercury] 	Mercury WILL NOT start without the configured ports free!
+11:54:16  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+11:54:16  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+11:54:16  [main] 	Starting Check-Timer
+11:54:16  [main] 	Control Panel Ready
+11:54:17  [Apache] 	Attempting to start Apache app...
+11:54:17  [Apache] 	Status change detected: running
+11:54:21  [mysql] 	Attempting to start MySQL app...
+11:54:22  [mysql] 	Status change detected: running
+13:55:33  [mysql] 	Attempting to stop MySQL app...
+13:55:33  [Apache] 	Attempting to stop Apache (PID: 19120)
+13:55:33  [Apache] 	Attempting to stop Apache (PID: 11204)
+13:55:33  [Apache] 	Status change detected: stopped
+13:55:33  [mysql] 	Status change detected: stopped
+13:56:05  [main] 	Deinitializing Modules
+13:56:05  [main] 	Deinitializing Control Panel
+
+10:49:19  [main] 	Initializing Control Panel
+10:49:19  [main] 	Windows Version:  Enterprise  64-bit
+10:49:19  [main] 	XAMPP Version: 8.2.12
+10:49:19  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:49:19  [main] 	You are not running with administrator rights! This will work for
+10:49:19  [main] 	most application stuff but whenever you do something with services
+10:49:19  [main] 	there will be a security dialogue or things will break! So think 
+10:49:19  [main] 	about running this application with administrator rights!
+10:49:19  [main] 	XAMPP Installation Directory: "c:\users\luissaavaz\desktop\efdesarrolloweb\servidor\"
+10:49:19  [main] 	Checking for prerequisites
+10:49:22  [main] 	All prerequisites found
+10:49:22  [main] 	Initializing Modules
+10:49:22  [mercury] 	Problem detected!
+10:49:22  [mercury] 	Port 25 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+10:49:22  [mercury] 	Mercury WILL NOT start without the configured ports free!
+10:49:22  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+10:49:22  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+10:49:22  [mercury] 	Problem detected!
+10:49:22  [mercury] 	Port 110 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+10:49:22  [mercury] 	Mercury WILL NOT start without the configured ports free!
+10:49:22  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+10:49:22  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+10:49:22  [mercury] 	Problem detected!
+10:49:22  [mercury] 	Port 143 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+10:49:22  [mercury] 	Mercury WILL NOT start without the configured ports free!
+10:49:22  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+10:49:22  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+10:49:22  [main] 	Starting Check-Timer
+10:49:22  [main] 	Control Panel Ready
+10:49:25  [Apache] 	Attempting to start Apache app...
+10:49:25  [Apache] 	Status change detected: running
+10:49:27  [mysql] 	Attempting to start MySQL app...
+10:49:27  [mysql] 	Status change detected: running
+10:49:27  [mysql] 	Status change detected: stopped
+10:49:27  [mysql] 	Error: MySQL shutdown unexpectedly.
+10:49:27  [mysql] 	This may be due to a blocked port, missing dependencies, 
+10:49:27  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+10:49:27  [mysql] 	Press the Logs button to view error logs and check
+10:49:27  [mysql] 	the Windows Event Viewer for more clues
+10:49:27  [mysql] 	If you need more help, copy and post this
+10:49:27  [mysql] 	entire log window on the forums
+14:02:08  [Apache] 	Attempting to stop Apache (PID: 10428)
+14:02:08  [Apache] 	Attempting to stop Apache (PID: 12524)
+14:02:08  [Apache] 	Status change detected: stopped
+14:02:18  [main] 	Deinitializing Modules
+14:02:18  [main] 	Deinitializing Control Panel
+

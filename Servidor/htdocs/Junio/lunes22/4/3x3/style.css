@@ -1,0 +1,87 @@
+/* Centramos y permitimos que la tabla ocupe espacio según el tamaño de la pantalla */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    
+    /* Mantenemos el tamaño flexible */
+    width: 80vmin;
+    max-width: 500px;
+    /* Forzamos que la tabla sea siempre cuadrada */
+    aspect-ratio: 1 / 1; 
+}
+
+td {
+    width: 33.33%;
+    height: 33.33%;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+    /* LA CLAVE PARA QUE NO SE MUEVA */
+    font-size: 10vmin; /* Un poco más pequeño para dejar margen */
+    line-height: 0;    /* Elimina el espacio extra del texto */
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el borde no sume tamaño */
+}
+
+td:hover {
+    background-color: #f9f9f9;
+}
+
+/* Colores para las fichas */
+td.X { color: #e74c3c; }
+td.O { color: #3498db; }
+
+.ganadora {
+    background-color: lime;
+}
+
+dialog {
+    border: none;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    width: 250px;
+}
+
+dialog h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4); /* Fondo grisáceo suave */
+}
+
+dialog button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+dialog button:hover {
+    background-color: #555;
+}

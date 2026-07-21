@@ -1,0 +1,66 @@
+body {
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    justify-content: center;
+}
+
+h1 { margin-bottom: 30px; letter-spacing: 2px; }
+
+ul {
+    list-style: none;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.fa-couch {
+    /* Estilos generales del contenedor (el <i>) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+    
+    /* Configuración del número (el texto dentro del <i>) */
+    font-style: normal; 
+    font-weight: bold;
+    font-size: 1.2rem; /* Tamaño del número */
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    
+    /* Definimos un tamaño para el contenedor */
+    width: 60px;
+    height: 60px;
+}
+
+/* Usamos ::before para atacar específicamente al icono de FontAwesome */
+.fa-couch::before {
+    font-size: 3.5rem; /* Tamaño del icono */
+    position: absolute; /* Lo sacamos del flujo para que no afecte al número */
+    z-index: -1;       /* Lo ponemos detrás del número */
+}
+
+/* Efectos y estados que ya tenías */
+.fa-couch:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Efecto al pasar el ratón */
+.fa-couch:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+
+.bloqueada {
+    pointer-events: none; /* Esto evita que el clic ocurra */
+    cursor: not-allowed;
+    opacity: 0.5; /* Opcional: para que se vean atenuadas */
+}

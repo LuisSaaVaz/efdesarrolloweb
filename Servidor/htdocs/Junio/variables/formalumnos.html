@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Productos
+
+    </title>
+</head>
+<body>
+    <center><h1>Alta Alumnos</h1></center>
+    <form action="http://localhost/variables/grabarAlumnos2.php" method="POST">
+        <select name="provincia" id="">
+            <option >A Coruña</option>
+            <option >Lugo</option>
+            <option >Ourense</option>
+            <option >Pontevedra</option>
+        </select>
+        <br>
+
+        <input type="text" name="nombre" maxlength="100" placeholder="Nombre" required>
+        <br>
+        <input type="email" name="mail" placeholder="Correo electrónico" required>
+        <br>
+        <input type="number" name="edad" min="18" max="100" placeholder="Edad" required>
+        <br>
+        <button>Enviar</button>
+    </form>
+</body>
+</html>

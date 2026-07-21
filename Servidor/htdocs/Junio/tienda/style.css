@@ -1,0 +1,324 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    padding-bottom: 40px;
+}
+
+/* --- CABECERA Y NAVEGACIÓN --- */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 20px;
+    margin-bottom: 30px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav h1 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+nav a:hover {
+    transform: scale(1.1);
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* MENSAJES DE ERROR / VACÍO */
+main > p, main > em {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-top: 50px;
+}
+
+/* --- CUADRÍCULA DE PRODUCTOS (INDEX) --- */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    list-style: none;
+}
+
+/* --- DISEÑO DE LAS TARJETAS (LI) --- */
+.productos li {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+}
+
+.productos li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Imágenes de los productos */
+.productos li img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Textos de la tarjeta */
+.productos li p:nth-of-type(1) {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.productos li p:nth-of-type(2) {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+/* --- FORMULARIOS Y BOTONES (AÑADIR AL CARRITO) --- */
+.productos form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.productos input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.productos button, .cesta button {
+    flex-grow: 1;
+    background-color: #2c3e50;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.productos button:hover {
+    background-color: #34495e;
+}
+
+.productos button i {
+    font-size: 1.2rem;
+}
+
+
+/* --- VISTA DE LA CESTA (CESTA.PHP) --- */
+.cesta {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+/* Tarjeta de la cesta (Fila horizontal) */
+.cesta li {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.cesta article {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.cesta article img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.cesta article p:nth-of-type(1) {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+/* Precio total por producto */
+.cesta article p:nth-of-type(2) {
+    margin-left: auto;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Botón de eliminar de la cesta */
+.cesta form {
+    display: flex;
+    align-items: center;
+}
+
+.cesta button {
+    background-color: transparent;
+    padding: 5px;
+}
+
+.cesta button:hover {
+    background-color: #fce4e4;
+    border-radius: 50%;
+}
+
+.cesta button i {
+    font-size: 1.4rem;
+}
+
+/* --- SECCIÓN TOTAL DEL CARRITO --- */
+main > p:last-of-type {
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    border-top: 2px solid #ddd;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+
+/* ========================================== */
+/* NUEVO: FORMULARIO DE INSERCIÓN (CREAR)    */
+/* ========================================== */
+
+/* Estilo para el formulario cuando es el principal de la página */
+body > form, main > form {
+    max-width: 500px;
+    margin: 60px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Estructura vertical para las etiquetas y los inputs */
+form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* Inputs de texto y número */
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+    border-color: #2ecc71;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Input de tipo archivo (File) */
+form input[type="file"] {
+    padding: 8px 10px;
+    background-color: #f8f9fa;
+    border: 1px dashed #ced6e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+form input[type="file"]::file-selector-button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.2s;
+}
+
+form input[type="file"]::file-selector-button:hover {
+    background-color: #34495e;
+}
+
+/* Botón de insertar grande */
+form button:not(.productos button):not(.cesta button) {
+    width: 100%;
+    background-color: #2ecc71;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
+}
+
+form button:not(.productos button):not(.cesta button):hover {
+    background-color: #27ae60;
+}
+
+form button:not(.productos button):not(.cesta button):active {
+    transform: scale(0.98);
+}

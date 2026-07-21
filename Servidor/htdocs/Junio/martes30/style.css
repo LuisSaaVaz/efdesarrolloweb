@@ -1,0 +1,80 @@
+/* Estilos base */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    margin: 0;
+}
+
+h1 { color: #2c3e50; margin-bottom: 20px; }
+
+/* Contenedor principal */
+main {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Input y botón */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover { background-color: #2980b9; }
+
+/* Lista de tareas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    background: #fcfcfc;
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+li p { margin: 0; font-size: 1.1rem; }
+
+/* Efecto visual al marcar */
+.marcado {
+    text-decoration: line-through;
+    color: #95a5a6;
+}
+
+/* Estilo para el checkbox */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

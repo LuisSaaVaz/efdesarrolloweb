@@ -1,0 +1,41 @@
+:root {
+    --header-height: 60px;
+    /* Ajusta este valor al alto que desees */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Asegura que esté por encima de todo */
+
+    nav .container {
+        padding: 0 2rem;
+
+    }
+}
+
+main {
+    /* El alto es 100vh menos el alto del header */
+    min-height: calc(100vh - var(--header-height)) !important;
+
+    /* Empuja el contenido hacia abajo para que no quede tapado por el header fijo */
+    margin-top: var(--header-height);
+
+    /* Esto mantiene tu centrado actual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+

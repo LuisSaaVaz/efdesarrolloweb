@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler de Vehículos</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="fa-solid fa-car fa-xl" style="color: white; margin-right: 8px;"></i> Alquiler
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Parte IZQUIERDA (Pestañas de navegación de gestión) -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-izquierda"></ul>
+                    
+                    <!-- Parte DERECHA (Login, Registro o Perfil/Logout) -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="nav-derecha"></ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR DINÁMICO PRINCIPAL -->
+    <main class="container my-4" id="contenedor-principal">
+        <!-- El JS se encargará de pintar aquí el Login, el Registro o la sección de Gestión con Cards -->
+    </main>
+
+    <!-- CONTENEDOR DE TOASTS -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1111">
+        <div id="liveToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-mensaje"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ÚNICO DE GESTIÓN (Insertar / Editar) -->
+    <div class="modal fade" id="modalGestion" tabindex="-1" aria-labelledby="modalGestionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGestionTitulo">Insertar Elemento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-gestion">
+                    <!-- Inputs ocultos para controlar la acción (insertar/editar) y la tabla -->
+                    <input type="hidden" name="action" id="gestion-action" value="insertar">
+                    <input type="hidden" name="id" id="gestion-id" value="">
+                    <input type="hidden" name="tipo" id="input-tipo" value="vehiculos">
+                    
+                    <div class="modal-body" id="campos-dinamicos-modal">
+                        <!-- Los campos del formulario se inyectarán aquí con JS según la categoría -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btn-submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Librerías Externas -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+    
+    <!-- Tus Scripts JS Modulares -->
+    <script src="JS/globales.js"></script>
+    <script src="JS/operaciones.js"></script>
+    <script src="JS/main.js"></script>
+</body>
+</html>

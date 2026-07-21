@@ -1,0 +1,27 @@
+1. Crea una base de datos llamada tienda
+2. Crea las siguientes tablas dentro de la BBDD anterior
+	- clientes (id, nombre, apellidos, edad, localidad, provincia)
+	- productos (id, nombre, precio, categoria)
+	- proveedores (id, nombre, cif, telefono, direccion)
+
+3. Tienes que crear la estructura para poder realizar lo siguiente:
+	Una página principal(index.html) que te permita acceder a las altas de cada una de las tablas (sus formularios)
+	En esta página principal(index.html) también podremos acceder a los documentos de consultas. (puedes crear la forma que quieras)
+
+4. Para las altas de cada una de las tablas, se creará un formulario y su documento que gestiona el alta (cada uno de estos formularios mostrará el menú igual que en el index)
+
+5. Para los documentos de consultas (que también mostrarán el menú en la parte superior):
+	Clientes: 
+		- Poder ver todos los clientes
+		- Poder buscar un cliente por localidad
+		- Poder buscar un cliente por provincia
+		- Poder buscar un cliente por nombre y apellidos (Ojo, no tengo porque saber todos los apellidos)
+	Productos:
+		- Poder buscar todos los prodcutos
+		- Poder buscar los productos por categorías (no la tengo que saber exacta)
+		- Poder buscar los prodcutos por un rango de precios (los que cuestan más de 5 y menos de 20 por ejemplo)
+
+	Proveedores:
+		- Poder buscar todos los proveedores
+		- Poder buscar por cif
+		- Poder buscar por parte de la dirección
