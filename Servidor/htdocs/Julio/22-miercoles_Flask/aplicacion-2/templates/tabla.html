@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/altas">Altas</a></li>
+                <li><a href="/tabla">Tabla</a></li>
+                <li><a href="/contact">Contacto</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <h1>Tabla</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDOS</th>
+                    <th>EDAD</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr>
+                        <td>{{cliente[0]}}</td>
+                        <td>{{cliente[1]}}</td>
+                        <td>{{cliente[2]}}</td>
+                        <td>{{cliente[3]}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
