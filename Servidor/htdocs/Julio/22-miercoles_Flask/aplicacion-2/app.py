@@ -1,17 +1,7 @@
 from flask import Flask, render_template, request
-import mysql.connector
+from utils.ddbb import *
 
 servidor = Flask(__name__) # Viene siendo el start de Apache
-
-# Crear la DDBB
-ddbb = mysql.connector.connect(
-    host = "10.10.10.160",
-    user = "clase",
-    password = "1234",
-    database = "martes21"
-)
-
-conexion = ddbb.cursor()
 
 # Definir RUTAS de Renderizar
 @servidor.route("/")
@@ -43,20 +33,11 @@ def insert():
     VALUES ('{nom}', '{apes}', '{age}')
     """
     
-    conexion.execute(sql)
-
-    # Si hago Insert, Update o Delete hay que hacer commit a la DDBB
-    ddbb.commit()
+    add(sql)
 
     # Voy a tabla.html
     return tabla()
 
-def search(tabla):
-    sql = f"SELECT * FROM {tabla}"
-
-    conexion.execute(sql)
-
-    return conexion.fetchall()
 
 # Arrancar el servidor
 servidor.run()
