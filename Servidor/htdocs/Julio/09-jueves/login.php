@@ -18,7 +18,7 @@
 			header("Location: index.php");
 			exit();
 		} else {
-			echo "<script>alert('Usuario o contraseña incorrectos'); window.location.href='index.php';</script>";
+			echo "Usuario o contraseña incorrectos";
 		}
 	}
 ?>

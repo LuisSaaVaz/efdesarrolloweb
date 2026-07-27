@@ -363,3 +363,49 @@
 13:59:07  [main] 	Deinitializing Modules
 13:59:07  [main] 	Deinitializing Control Panel
 
+9:08:34  [main] 	Initializing Control Panel
+9:08:34  [main] 	Windows Version:  Enterprise  64-bit
+9:08:34  [main] 	XAMPP Version: 8.2.12
+9:08:34  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:08:34  [main] 	You are not running with administrator rights! This will work for
+9:08:34  [main] 	most application stuff but whenever you do something with services
+9:08:34  [main] 	there will be a security dialogue or things will break! So think 
+9:08:34  [main] 	about running this application with administrator rights!
+9:08:34  [main] 	XAMPP Installation Directory: "c:\users\luissaavaz\desktop\efdesarrolloweb\servidor\"
+9:08:34  [main] 	Checking for prerequisites
+9:08:40  [main] 	All prerequisites found
+9:08:40  [main] 	Initializing Modules
+9:08:40  [mercury] 	Problem detected!
+9:08:40  [mercury] 	Port 25 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+9:08:40  [mercury] 	Mercury WILL NOT start without the configured ports free!
+9:08:40  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+9:08:40  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+9:08:40  [mercury] 	Problem detected!
+9:08:40  [mercury] 	Port 110 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+9:08:40  [mercury] 	Mercury WILL NOT start without the configured ports free!
+9:08:40  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+9:08:40  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+9:08:40  [mercury] 	Problem detected!
+9:08:40  [mercury] 	Port 143 in use by ""C:\Program Files (x86)\hMailServer\Bin\hMailServer.exe" RunAsService" with PID 5520!
+9:08:40  [mercury] 	Mercury WILL NOT start without the configured ports free!
+9:08:40  [mercury] 	You need to uninstall/disable/reconfigure the blocking application
+9:08:40  [mercury] 	or reconfigure Mercury and the Control Panel to listen on a different port
+9:08:40  [main] 	Starting Check-Timer
+9:08:40  [main] 	Control Panel Ready
+9:08:42  [Apache] 	Attempting to start Apache app...
+9:08:42  [Apache] 	Status change detected: running
+9:08:45  [mysql] 	Attempting to start MySQL app...
+9:08:45  [mysql] 	Status change detected: running
+10:16:41  [Apache] 	Attempting to stop Apache (PID: 11876)
+10:16:41  [Apache] 	Attempting to stop Apache (PID: 19032)
+10:16:41  [Apache] 	Status change detected: stopped
+10:16:44  [Apache] 	Attempting to start Apache app...
+10:16:45  [Apache] 	Status change detected: running
+13:59:48  [mysql] 	Attempting to stop MySQL app...
+13:59:48  [mysql] 	Status change detected: stopped
+13:59:49  [Apache] 	Attempting to stop Apache (PID: 8252)
+13:59:49  [Apache] 	Attempting to stop Apache (PID: 11604)
+13:59:49  [Apache] 	Status change detected: stopped
+13:59:59  [main] 	Deinitializing Modules
+13:59:59  [main] 	Deinitializing Control Panel
+
