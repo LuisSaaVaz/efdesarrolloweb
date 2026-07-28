@@ -5,8 +5,17 @@ header('Content-Type: application/json; charset=utf-8');
 try {
     include 'conexion.php';
 
-    // Obtener todas las mesas ordenadas por su número
-    $stmt = $con->prepare("SELECT id_mesa, numero_mesa, estado FROM mesas ORDER BY numero_mesa ASC");
+    // Capturar el filtro de estado si viene por GET
+    $estado = isset($_GET['estado']) ? trim($_GET['estado']) : 'todas';
+
+    // Preparar la consulta SQL según el estado recibido
+    if ($estado === 'libre' || $estado === 'ocupada') {
+        $stmt = $con->prepare("SELECT id_mesa, numero_mesa, estado FROM mesas WHERE estado = ? ORDER BY numero_mesa ASC");
+        $stmt->bind_param("s", $estado);
+    } else {
+        $stmt = $con->prepare("SELECT id_mesa, numero_mesa, estado FROM mesas ORDER BY numero_mesa ASC");
+    }
+
     $stmt->execute();
     $result = $stmt->get_result();
 
