@@ -11,63 +11,68 @@
     <!-- Font Awesome (Iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Estilos Personalizados -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <style>
         .card-mesa {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: pointer;
             border-width: 2px;
-        }
+            }
 
-        .card-mesa:hover {
+            .card-mesa:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
+            }
 
-        .mesa-tarjeta.libre {
+            .mesa-tarjeta.libre {
             background-color: #d1e7dd;
             border-color: #0f5132;
             color: #0f5132;
-        }
+            }
 
-        .mesa-tarjeta.ocupada {
+            .mesa-tarjeta.ocupada {
             background-color: #f8d7da;
             border-color: #842029;
             color: #842029;
-        }
+            }
 
-        .mesa-tarjeta.libre .icono-mesa {
+            .mesa-tarjeta.libre .icono-mesa {
             color: rgb(25, 135, 84);
-        }
+            }
 
-        .mesa-tarjeta.ocupada .icono-mesa {
+            .mesa-tarjeta.ocupada .icono-mesa {
             color: rgb(255, 17, 0);
-        }
+            }
 
-        .badge-estado.libre {
+            .badge-estado.libre {
             background-color: #198754;
-        }
+            }
 
-        .badge-estado.ocupada {
+            .badge-estado.ocupada {
             background-color: #dc3545;
-        }
+            }
 
-        /* Card Bebidas */
-        .card-bebida {
+            /* Card Bebidas */
+            .card-bebida {
             cursor: pointer;
             transition: transform 0.1s ease;
-        }
-        .card-bebida:hover {
+            }
+
+            .card-bebida:hover {
             transform: scale(1.02);
             border-color: #0d6efd;
-        }
-        .img-bebida {
-            height: 50px;
-            object-fit: cover;
-        }
+            }
 
-        /* --- CORRECCIÓN DE DESBORDAMIENTO (CONTAINMENT FLEXBOX) --- */
-        
-        .modal-body-fixed {
+            .img-bebida {
+            height: 50px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            }
+
+            /* --- CORRECCIÓN DE DESBORDAMIENTO (CONTAINMENT FLEXBOX) --- */
+
+            .modal-body-fixed {
             height: 80vh;
             max-height: 80vh;
             overflow: hidden !important;
@@ -75,19 +80,19 @@
             flex-direction: column;
             width: 100%;
             box-sizing: border-box;
-        }
+            }
 
-        .layout-split {
+            .layout-split {
             display: flex;
             flex-direction: column;
             height: 100%;
             width: 100%;
             max-width: 100%;
             overflow: hidden;
-        }
+            }
 
-        /* 1. SECCIÓN BEBIDAS */
-        .seccion-bebidas {
+            /* 1. SECCIÓN BEBIDAS */
+            .seccion-bebidas {
             flex: 1 1 50%;
             height: 50%;
             min-width: 0;
@@ -97,18 +102,18 @@
             overflow: hidden;
             border-bottom: 2px solid #dee2e6;
             padding-bottom: 8px;
-        }
+            }
 
-        .scroll-bebidas {
+            .scroll-bebidas {
             flex: 1;
             min-height: 0;
             overflow-y: auto;
             overflow-x: hidden;
             padding-right: 4px;
-        }
+            }
 
-        /* 2. SECCIÓN TICKET (Ajustada para no desbordar) */
-        .seccion-ticket {
+            /* 2. SECCIÓN TICKET (Ajustada para no desbordar) */
+            .seccion-ticket {
             flex: 1 1 50%;
             height: 50%;
             min-width: 0;
@@ -117,53 +122,56 @@
             flex-direction: column;
             overflow: hidden;
             padding-top: 8px;
-        }
+            }
 
-        .scroll-ticket {
+            .scroll-ticket {
             flex: 1;
             min-height: 0;
             overflow-y: auto;
             overflow-x: hidden;
             border: 1px solid #dee2e6;
             border-radius: 6px;
-        }
+            }
 
-        /* VISTA ESCRITORIO (md / >= 768px) */
-        @media (min-width: 768px) {
+            /* VISTA ESCRITORIO (md / >= 768px) */
+            @media (min-width: 768px) {
             .layout-split {
                 flex-direction: row;
                 gap: 12px;
             }
+
             .seccion-bebidas {
                 flex: 1 1 58%;
                 max-width: 58%;
                 height: 100%;
                 border-bottom: none;
-                border-end: 2px solid #dee2e6;
                 padding-bottom: 0;
                 padding-right: 12px;
             }
+
             .seccion-ticket {
                 flex: 1 1 42%;
                 max-width: 42%;
                 height: 100%;
                 padding-top: 0;
             }
+
             .img-bebida {
                 height: 65px;
             }
-        }
+            }
 
-        /* Barras de scroll finas */
-        .scroll-bebidas::-webkit-scrollbar,
-        .scroll-ticket::-webkit-scrollbar {
+            /* Barras de scroll finas */
+            .scroll-bebidas::-webkit-scrollbar,
+            .scroll-ticket::-webkit-scrollbar {
             width: 5px;
-        }
-        .scroll-bebidas::-webkit-scrollbar-thumb,
-        .scroll-ticket::-webkit-scrollbar-thumb {
+            }
+
+            .scroll-bebidas::-webkit-scrollbar-thumb,
+            .scroll-ticket::-webkit-scrollbar-thumb {
             background-color: #adb5bd;
             border-radius: 4px;
-        }
+            }
     </style>
 </head>
 <body class="bg-light">
@@ -187,7 +195,7 @@
             <span class="badge bg-danger fs-6"><i class="fa-solid fa-circle me-1"></i> Ocupada</span>
         </div>
 
-        <!-- Contenedor Responsive Grid para las Mesas -->
+        <!-- Contenedor Grid para las Mesas -->
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3" id="contenedor-mesas"></div>
     </div>
 
@@ -203,30 +211,26 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
-                <!-- Body con alto fijo y contención de desbordamiento -->
+                <!-- Body con estructura Flexbox aislada -->
                 <div class="modal-body modal-body-fixed p-2 p-md-3">
                     <div class="layout-split">
                         
-                        <!-- PARTE 1: CATÁLOGO DE BEBIDAS -->
+                        <!-- CATÁLOGO DE BEBIDAS -->
                         <div class="seccion-bebidas">
                             <h6 class="fw-bold mb-2 fs-6 text-truncate">
                                 <i class="fa-solid fa-wine-glass me-1 text-primary"></i> Catálogo de Bebidas
                             </h6>
-                            <!-- Scroll propio del catálogo -->
                             <div class="scroll-bebidas">
-                                <div class="row row-cols-2 row-cols-sm-3 g-2" id="contenedor-bebidas">
-                                    <!-- Carga AJAX -->
-                                </div>
+                                <div class="row row-cols-2 row-cols-sm-3 g-2" id="contenedor-bebidas"></div>
                             </div>
                         </div>
 
-                        <!-- PARTE 2: TICKET / PEDIDO DE MESA -->
+                        <!-- TICKET DE LA MESA -->
                         <div class="seccion-ticket">
                             <h6 class="fw-bold mb-2 fs-6 text-truncate">
                                 <i class="fa-solid fa-receipt me-1 text-danger"></i> Consumiciones de la Mesa
                             </h6>
                             
-                            <!-- Scroll propio de las líneas del ticket -->
                             <div class="scroll-ticket">
                                 <ul class="list-group list-group-flush" id="lista-pedido">
                                     <li class="list-group-item text-center text-muted py-3" id="pedido-vacio">
@@ -235,7 +239,6 @@
                                 </ul>
                             </div>
 
-                            <!-- Footer con Total y Botón Pagar -->
                             <div class="border-top pt-2 mt-2 bg-white">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <span class="fs-6 fw-bold">Total:</span>
@@ -254,7 +257,7 @@
         </div>
     </div>
 
-    <!-- Contenedor Toast para Notificaciones -->
+    <!-- Toast para Notificaciones -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
         <div id="toast-mensaje" class="toast align-items-center text-white border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
@@ -264,7 +267,7 @@
         </div>
     </div>
 
-    <!-- jQuery 3.7.1 y Bootstrap JS -->
+    <!-- jQuery 3.7.1 y Bootstrap 5 JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -278,11 +281,10 @@
             function mostrarToast(mensaje, esExito) {
                 var $toast = $('#toast-mensaje');
                 $toast.removeClass('bg-success bg-danger').addClass(esExito ? 'bg-success' : 'bg-danger');
-                $('#toast-texto').text(mensaje);
+                $('#toast-texto').text(mensaje || 'Ocurrió un error inesperado.');
                 new bootstrap.Toast($toast[0]).show();
             }
 
-            // Cargar listado de mesas
             function cargarMesas() {
                 $.get('./PHP/get_mesas.php', function(respuesta) {
                     if (respuesta.status === 'success') {
@@ -314,12 +316,12 @@
                     } else {
                         mostrarToast(respuesta.message || 'Error al cargar las mesas.', false);
                     }
-                }, 'json').fail(function() {
-                    mostrarToast("Error de conexión con el servidor.", false);
+                }, 'json').fail(function(jqXHR) {
+                    var msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : "Error de conexión con el servidor.";
+                    mostrarToast(msg, false);
                 });
             }
 
-            // Cargar listado de bebidas
             function cargarBebidas() {
                 $.get('./PHP/get_bebidas.php', function(respuesta) {
                     if (respuesta.status === 'success') {
@@ -346,12 +348,12 @@
                     } else {
                         mostrarToast(respuesta.message || 'Error al cargar bebidas.', false);
                     }
-                }, 'json').fail(function() {
-                    mostrarToast("Error al obtener las bebidas.", false);
+                }, 'json').fail(function(jqXHR) {
+                    var msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : "Error al obtener las bebidas.";
+                    mostrarToast(msg, false);
                 });
             }
 
-            // Renderizar pedido en pantalla
             function renderizarPedido() {
                 var $lista = $('#lista-pedido').empty();
                 var total = 0;
@@ -386,7 +388,7 @@
                 $('#total-pedido').text(total.toFixed(2) + ' €');
             }
 
-            // Click en mesa
+            // 1. ABRIR MESA Y BUSCAR TICKET PENDIENTE
             $(document).on('click', '.card-mesa', function() {
                 mesaSeleccionada = {
                     id: $(this).data('id'),
@@ -395,19 +397,28 @@
                 };
 
                 $('#titulo-modal-mesa').text('Mesa ' + mesaSeleccionada.numero);
-                
-                pedidoActual = [];
-                renderizarPedido();
 
                 if (catalogoBebidas.length === 0) {
                     cargarBebidas();
                 }
 
-                var modal = new bootstrap.Modal(document.getElementById('modalMesa'));
-                modal.show();
+                $.get('./PHP/get_ticket.php', { id_mesa: mesaSeleccionada.id }, function(res) {
+                    if (res.status === 'success') {
+                        pedidoActual = res.pedido || [];
+                        renderizarPedido();
+                        
+                        var modal = new bootstrap.Modal(document.getElementById('modalMesa'));
+                        modal.show();
+                    } else {
+                        mostrarToast(res.message, false);
+                    }
+                }, 'json').fail(function(jqXHR) {
+                    var msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : "Error al consultar el ticket.";
+                    mostrarToast(msg, false);
+                });
             });
 
-            // Añadir bebida
+            // 2. AÑADIR BEBIDA
             $(document).on('click', '.btn-agregar-bebida', function() {
                 var id = $(this).data('id');
                 var nombre = $(this).data('nombre');
@@ -429,7 +440,7 @@
                 renderizarPedido();
             });
 
-            // Restar bebida
+            // 3. RESTAR BEBIDA
             $(document).on('click', '.btn-restar', function() {
                 var id = $(this).data('id');
                 var index = pedidoActual.findIndex(item => item.id_bebida === id);
@@ -445,7 +456,28 @@
                 renderizarPedido();
             });
 
-            // Cargar datos iniciales
+            // 4. GUARDAR / SINCRONIZAR AL CERRAR EL MODAL MEDIANTE $.post
+            $('#modalMesa').on('hide.bs.modal', function () {
+                if (!mesaSeleccionada) return;
+
+                var datos = {
+                    id_mesa: mesaSeleccionada.id,
+                    bebidas: JSON.stringify(pedidoActual)
+                };
+
+                $.post('./PHP/post_ticket_bebidas.php', datos, function(respuesta) {
+                    if (respuesta.status === 'success') {
+                        cargarMesas(); // Recargar el tablero de mesas
+                    } else {
+                        mostrarToast(respuesta.message, false);
+                    }
+                }, 'json').fail(function(jqXHR) {
+                    var msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : "Error al guardar el ticket.";
+                    mostrarToast(msg, false);
+                });
+            });
+
+            // Inicialización
             cargarMesas();
             $('#btn-recargar').click(cargarMesas);
         });

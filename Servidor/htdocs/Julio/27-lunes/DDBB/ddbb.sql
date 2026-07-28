@@ -32,8 +32,10 @@ CREATE TABLE ticket_bebidas (
     cantidad INT NOT NULL DEFAULT 1,
     precio_unitario DECIMAL(6,2) NOT NULL, -- Se guarda el precio del momento de la venta
     FOREIGN KEY (id_ticket) REFERENCES tickets(id_ticket) ON DELETE CASCADE,
-    FOREIGN KEY (id_bebida) REFERENCES bebidas(id_bebida)
+    FOREIGN KEY (id_bebida) REFERENCES bebidas(id_bebida),
+    UNIQUE (id_ticket, id_bebida)
 );
+
 
 INSERT INTO mesas (numero_mesa, estado) VALUES 
 (1, 'libre'),
