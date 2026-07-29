@@ -1,0 +1,40 @@
+Distinguir si son lenguajes de servidor
+- Si: PHP
+- No: HTML, CSS, JQuery, SQL 
+
+Recorrer todos los datos
+- ForEach
+
+Variables PHP
+- $nombre
+
+Propiedades de un objeto
+$nombre -> propiedad
+
+Metodos de un objeto
+$nombre -> metodo()
+
+Objeto conexion
+$con = new mysqly("direccion", "usuario", "password", "DDBB")
+
+Visualizar el contenido de un PHP
+localhost/carpeta/archivo
+
+Ver la fecha en PHP
+date("Y-m-d H:i:s");
+date("Y-m-d H:i:s", strtotime("+3 minutes")); Añadirle tiempo
+
+Tipos de encriptado
+- 1 via: Solo encripto
+- 2 vias: Encripto y desencripto
+
+No se puede hacer un echo de un array. Hay que tranformarlo en un array
+echo json_encode();
+
+Ver la ultima id insertada
+- $con -> insert_id
+- Consultar la tabla descendente y limitar a 1
+- Consultar en la tabla el max(id)
+
+Si una funcion se declara con 1 parametro al llamarla estoy obligado a darselo
+Si una funcion se declara con 1 parametrocon un valor por defecto al llamarla no estoy obligado a darselo
