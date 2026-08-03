@@ -1,0 +1,17 @@
+- Cliente
+    - Elegir Tema
+        - Aparece examen
+            - 5 preguntas tipo test. Orden Aleatorio
+            - 3 opciones. Orden Aleatorio
+            - 1 correcta
+        - No puede enviar el examen hasta responder todo
+        - Saber quien hizo el examen
+        - Mostrar nota antes de salir del examen
+        - Poder consultar lista examenes realizados y sus notas
+        * Tiempo maximo de realización 3 minutos 
+
+- Admin
+    - Dar cursos de alta
+    - Dar de alta preguntas y respuestas. 
+    - Ver quienes hicieron examenes. usar Disctinct
+    - Al seleccionar un alumno veré sus examenes: Notas, Tema, Cuando lo hizo
