@@ -113,18 +113,25 @@
                 </div>
                 <form id="formLogin">
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="loginEmail" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="loginEmail" name="email" required placeholder="tu@email.com">
+                        
+                        <!-- Correo Electrónico -->
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="loginEmail" name="email" placeholder="tu@email.com" required>
+                            <label for="loginEmail"><i class="bi bi-envelope me-1"></i>Correo Electrónico</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="loginPassword" name="password" required placeholder="••••••••">
+
+                        <!-- Contraseña -->
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="loginPassword" name="password" placeholder="••••••••" required>
+                            <label for="loginPassword"><i class="bi bi-lock me-1"></i>Contraseña</label>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" id="btnLoginSubmit">Entrar</button>
+                        <button type="submit" class="btn btn-primary" id="btnLoginSubmit">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
+                        </button>
                     </div>
                 </form>
             </div>
@@ -141,35 +148,50 @@
                 </div>
                 <form id="formRegister">
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="regNombre" class="form-label">Nombre Completo</label>
-                            <input type="text" class="form-control" id="regNombre" name="nombre" required placeholder="Juan Pérez">
-                        </div>
-                        <div class="mb-3">
-                            <label for="regEmail" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="regEmail" name="email" required placeholder="tu@email.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="regPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="regPassword" name="password" required placeholder="••••••••">
-                        </div>
                         
+                        <!-- Nombre Completo -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="regNombre" name="nombre" placeholder="Juan Pérez" required>
+                            <label for="regNombre"><i class="bi bi-person me-1"></i>Nombre Completo</label>
+                        </div>
+
+                        <!-- Correo Electrónico -->
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="regEmail" name="email" placeholder="tu@email.com" required>
+                            <label for="regEmail"><i class="bi bi-envelope me-1"></i>Correo Electrónico</label>
+                        </div>
+
+                        <!-- Fecha de Nacimiento -->
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="regFechaNac" name="fecha_nacimiento" required>
+                            <label for="regFechaNac"><i class="bi bi-calendar-date me-1"></i>Fecha de Nacimiento</label>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="regPassword" name="password" placeholder="••••••••" required>
+                            <label for="regPassword"><i class="bi bi-lock me-1"></i>Contraseña</label>
+                        </div>
+
                         <!-- Rol por defecto para autoregistro público -->
                         <input type="hidden" name="role" id="regRole" value="alumno">
-                        
-                        <!-- Selector de Rol (Se mostrará solo cuando un Admin dé de alta a un Profesor/Alumno) -->
-                        <div class="mb-3 d-none" id="containerRoleSelector">
-                            <label for="regRoleSelect" class="form-label">Rol del Usuario</label>
+
+                        <!-- Selector de Rol (Se mostrará solo cuando un Admin dé de alta a un Profesor/Admin) -->
+                        <div class="form-floating mb-3 d-none" id="containerRoleSelector">
                             <select class="form-select" id="regRoleSelect" name="role_select">
                                 <option value="alumno" selected>Alumno</option>
                                 <option value="profesor">Profesor</option>
                                 <option value="admin">Administrador</option>
                             </select>
+                            <label for="regRoleSelect"><i class="bi bi-person-badge me-1"></i>Rol del Usuario</label>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success" id="btnRegisterSubmit">Registrarme</button>
+                        <button type="submit" class="btn btn-success" id="btnRegisterSubmit">
+                            <i class="bi bi-person-check me-1"></i>Registrarme
+                        </button>
                     </div>
                 </form>
             </div>

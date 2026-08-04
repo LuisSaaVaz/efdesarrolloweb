@@ -4,22 +4,36 @@ require_once "conexion.php";
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre   = trim($_POST['nombre'] ?? '');
-    $email    = trim($_POST['email'] ?? '');
-    $password = trim($_POST['password'] ?? '');
-    $role     = trim($_POST['role'] ?? 'alumno');
+    $nombre    = trim($_POST['nombre'] ?? '');
+    $email     = trim($_POST['email'] ?? '');
+    $password  = trim($_POST['password'] ?? '');
+    $fecha_nac = trim($_POST['fecha_nacimiento'] ?? '');
+    $role      = trim($_POST['role'] ?? 'alumno');
 
-    if (empty($nombre) || empty($email) || empty($password)) {
+    // Validar campos obligatorios
+    if (empty($nombre) || empty($email) || empty($password) || empty($fecha_nac)) {
         echo json_encode(["success" => false, "message" => "Por favor, completa todos los campos requeridos."]);
         exit();
     }
 
-    // Restricción de seguridad: Solo un Admin logueado puede registrar profesores o admins
+    // Validar formato de fecha (YYYY-MM-DD)
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_nac)) {
+        echo json_encode(["success" => false, "message" => "El formato de la fecha de nacimiento no es válido."]);
+        exit();
+    }
+
+    // Protección de Roles: Solo 'admin' puede crear 'profesor' o 'admin'
     if ($role === 'profesor' || $role === 'admin') {
-        if (!isset($_SESSION['logged']['role']) || $_SESSION['logged']['role'] !== 'admin') {
-            echo json_encode(["success" => false, "message" => "No tienes permisos para registrar a un " . $role]);
+        $usuarioSesion = $_SESSION['usuario'] ?? $_SESSION['logged'] ?? null;
+        $rolActual = is_array($usuarioSesion) ? ($usuarioSesion['role'] ?? '') : '';
+
+        if ($rolActual !== 'admin') {
+            echo json_encode(["success" => false, "message" => "No tienes permisos para registrar un usuario con rol: " . $role]);
             exit();
         }
+    } else {
+        // Forzar rol alumno si es un autoregistro público
+        $role = 'alumno';
     }
 
     // 1. Comprobar si el email ya existe
@@ -35,36 +49,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $stmtCheck->close();
 
-    // 2. Hash de la contraseña e inserción en la BD
+    // 2. Hash de contraseña e inserción en BD
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmtInsert = $con->prepare("INSERT INTO usuarios (nombre, email, password, role) VALUES (?, ?, ?, ?)");
-    $stmtInsert->bind_param("ssss", $nombre, $email, $passwordHash, $role);
+    $stmtInsert = $con->prepare("INSERT INTO usuarios (nombre, email, password, fecha_nacimiento, role) VALUES (?, ?, ?, ?, ?)");
+    $stmtInsert->bind_param("sssss", $nombre, $email, $passwordHash, $fecha_nac, $role);
 
     if ($stmtInsert->execute()) {
-
-        // 3. Envío de correo electrónico con la función mail() de PHP
-        $to      = $email;
-        $subject = "Bienvenido/a a ColegioApp";
-        $message = "Hola " . $nombre . ",\n\n"
-            . "Tu cuenta en ColegioApp ha sido creada correctamente con el rol de '" . ucfirst($role) . "'.\n\n"
-            . "Ya puedes iniciar sesión desde la plataforma.\n\n"
-            . "Un saludo,\nEl equipo de ColegioApp.";
-
-        $headers = "From: no-reply@colegioapp.com\r\n" .
-            "Reply-To: soporte@colegioapp.com\r\n" .
-            "X-Mailer: PHP/" . phpversion() . "\r\n" .
-            "Content-Type: text/plain; charset=UTF-8\r\n";
-
-        // Intentamos enviar el correo (no bloquea el registro si falla la configuración local)
-        @mail($to, $subject, $message, $headers);
-
         echo json_encode([
             "success" => true,
-            "message" => "Usuario registrado con éxito. Se ha enviado un correo de confirmación."
+            "message" => "Usuario registrado con éxito."
         ]);
     } else {
-        echo json_encode(["success" => false, "message" => "Error al guardar el usuario en la base de datos."]);
+        echo json_encode(["success" => false, "message" => "Error al guardar el usuario: " . $con->error]);
     }
 
     $stmtInsert->close();

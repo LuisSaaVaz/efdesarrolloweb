@@ -33,37 +33,46 @@ $(document).ready(function () {
     });
 
     // 3. Evento Submit: Formulario de Registro
-    $('#formRegister').on('submit', function (e) {
+    $('#formRegister').on('submit', function(e) {
         e.preventDefault();
 
-        const nombre = $('#regNombre').val().trim();
-        const email = $('#regEmail').val().trim();
+        const nombre   = $('#regNombre').val().trim();
+        const email    = $('#regEmail').val().trim();
+        const fechaNac = $('#regFechaNac').val(); // Devuelve YYYY-MM-DD
         const password = $('#regPassword').val().trim();
 
-        let role = $('#regRole').val();
-        if (!$('#containerRoleSelector').hasClass('d-none')) {
+        // Si el contenedor está visible (is(':visible')), leemos el select; si no, forzamos 'alumno'
+        let role = 'alumno';
+        if ($('#containerRoleSelector').is(':visible')) {
             role = $('#regRoleSelect').val();
         }
 
-        if (nombre === '' || email === '' || password === '') {
-            mostrarToast('Por favor, completa los campos requeridos.', true);
+        if (!nombre || !email || !fechaNac || !password) {
+            mostrarToast('Por favor, completa todos los campos requeridos.', true);
             return;
         }
 
-        const datosRegistro = { nombre: nombre, email: email, password: password, role: role };
+        const datosRegistro = {
+            nombre: nombre,
+            email: email,
+            fecha_nacimiento: fechaNac,
+            password: password,
+            role: role
+        };
 
+        // LLAMADA A $.post MEDIANTE LA PROMESA .done() Y .fail()
         registrarUsuario(datosRegistro)
             .done(function (response) {
                 if (response.success) {
-                    mostrarToast(response.message, false);
+                    mostrarToast(response.message, false); // Muestra toast VERDE de éxito
                     $('#modalRegister').modal('hide');
                     $('#formRegister')[0].reset();
                 } else {
-                    mostrarToast(response.message, true);
+                    mostrarToast(response.message, true);  // Muestra toast ROJO si el email ya existe
                 }
             })
             .fail(function () {
-                mostrarToast('Error al procesar el registro.', true);
+                mostrarToast('Error de comunicación al intentar registrar el usuario.', true);
             });
     });
 
@@ -105,15 +114,17 @@ function comprobarEstadoInicial() {
 
 /**
  * Pinta el header y activa la vista según el usuario y su rol
+ * @param {Object} usuario - Datos devueltos por la sesión PHP
  */
 function renderizarInterfazUsuario(usuario) {
-    // UI del Header
+    // 1. UI del Header (Datos Básicos)
     $('#navLoggedOutUI').addClass('d-none');
     $('#navLoggedInUI').removeClass('d-none');
 
     $('#navUserName').text(usuario.nombre);
     $('#navUserEmail').text(usuario.email);
 
+    // Color del Badge de Rol
     let roleBadgeClass = 'bg-info text-dark';
     if (usuario.role === 'admin') roleBadgeClass = 'bg-danger text-white';
     if (usuario.role === 'profesor') roleBadgeClass = 'bg-warning text-dark';
@@ -122,37 +133,52 @@ function renderizarInterfazUsuario(usuario) {
         .attr('class', 'badge ms-1 ' + roleBadgeClass)
         .text(usuario.role.toUpperCase());
 
-    // Enlaces de Navegación por Rol
+    // 2. Generación Dinámica de Enlaces de Navegación
     const $navLinks = $('#navRoleLinks');
     $navLinks.empty();
 
     if (usuario.role === 'alumno') {
         $navLinks.append(`
             <li class="nav-item">
-                <a class="nav-link active" href="#" id="linkMisAsignaturas"><i class="bi bi-book me-1"></i>Mis Asignaturas</a>
+                <a class="nav-link active" href="#" id="linkAlumnoAsignaturas"><i class="bi bi-book me-1"></i>Mis Asignaturas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="linkMisNotas"><i class="bi bi-card-checklist me-1"></i>Exámenes y Notas</a>
+                <a class="nav-link" href="#" id="linkAlumnoExamenes"><i class="bi bi-pencil-square me-1"></i>Mis Exámenes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="linkAlumnoExpediente"><i class="bi bi-journal-check me-1"></i>Histórico / Expediente</a>
             </li>
         `);
     } else if (usuario.role === 'profesor') {
         $navLinks.append(`
             <li class="nav-item">
-                <a class="nav-link active" href="#" id="linkMisAlumnos"><i class="bi bi-people me-1"></i>Mis Alumnos</a>
+                <a class="nav-link active" href="#" id="linkProfesorClases"><i class="bi bi-easel me-1"></i>Mis Clases y Alumnos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="linkProfesorExamenes"><i class="bi bi-file-earmark-text me-1"></i>Gestión de Exámenes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="linkProfesorHistorico"><i class="bi bi-clock-history me-1"></i>Histórico Docente</a>
             </li>
         `);
     } else if (usuario.role === 'admin') {
         $navLinks.append(`
             <li class="nav-item">
-                <a class="nav-link active" href="#" id="linkGestionUsuarios"><i class="bi bi-person-gear me-1"></i>Gestión Usuarios</a>
+                <a class="nav-link active" href="#" id="linkAdminUsuarios"><i class="bi bi-person-gear me-1"></i>Usuarios y Matriculaciones</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="linkGestionCursos"><i class="bi bi-journal-plus me-1"></i>Cursos y Preguntas</a>
+                <a class="nav-link" href="#" id="linkAdminEstructura"><i class="bi bi-diagram-3 me-1"></i>Cursos, Aulas y Asignaturas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="linkAdminAnos"><i class="bi bi-calendar-range me-1"></i>Años Académicos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="linkAdminExamenes"><i class="bi bi-journal-plus me-1"></i>Exámenes y Preguntas</a>
             </li>
         `);
     }
 
-    // Vistas principales (<main>)
+    // 3. Activación de Secciones Principales en el HTML (<main>)
     $('main > section').addClass('d-none');
 
     if (usuario.role === 'alumno') {
