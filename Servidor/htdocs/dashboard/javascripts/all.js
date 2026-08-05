@@ -3215,9 +3215,9 @@
               old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
 
           $.extend(ajax_settings, {
-            success: function (data, textStatus, jqXHR) {
+            success: function (data, textStatus, error) {
               if ( $.isFunction(old_success) ) {
-                old_success(data, textStatus, jqXHR);
+                old_success(data, textStatus, error);
               }
 
               modal.html(data);

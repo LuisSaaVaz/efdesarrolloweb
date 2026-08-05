@@ -146,7 +146,7 @@ function renderizarInterfazUsuario(usuario) {
                 <a class="nav-link" href="#" id="linkAlumnoExamenes"><i class="bi bi-pencil-square me-1"></i>Mis Exámenes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="linkAlumnoExpediente"><i class="bi bi-journal-check me-1"></i>Histórico / Expediente</a>
+                <a class="nav-link" href="#" id="linkAlumnoExpediente"><i class="bi bi-clock-history me-1"></i></i>Histórico / Expediente</a>
             </li>
         `);
     } else if (usuario.role === 'profesor') {

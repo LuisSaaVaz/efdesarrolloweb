@@ -4,8 +4,10 @@ CREATE DATABASE IF NOT EXISTS colegio
 
 USE colegio;
 
+DROP TABLE IF EXISTS respuestas_alumno, preguntas_intento, intentos_examen, respuestas, preguntas, examenes, profesor_asignatura_aula, usuarios_asignaturas, asignaturas, usuarios_cursos, aulas, cursos, anos_academicos, usuarios;
+
 -- 2. Tabla de Usuarios (Con fecha_nacimiento)
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
@@ -16,26 +18,26 @@ CREATE TABLE usuarios (
 );
 
 -- 3. Tabla de Años Académicos
-CREATE TABLE anos_academicos (
+CREATE TABLE IF NOT EXISTS anos_academicos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(20) NOT NULL UNIQUE, -- Ej: '2025/2026'
     activo BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- 4. Tabla de Cursos
-CREATE TABLE cursos (
+CREATE TABLE IF NOT EXISTS cursos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL -- Ej: '1º ESO', '2º Primaria'
 );
 
--- 5. Tabla de Aulas (NUEVA)
-CREATE TABLE aulas (
+-- 5. Tabla de Aulas
+CREATE TABLE IF NOT EXISTS aulas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(10) NOT NULL UNIQUE -- Ej: 'A', 'B', 'C', 'D', 'E', 'F'
 );
 
 -- 6. Tabla de Matrículas / Cursos de Usuarios (Rediseñada)
-CREATE TABLE usuarios_cursos (
+CREATE TABLE IF NOT EXISTS usuarios_cursos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
     curso_id INT NOT NULL,
@@ -48,12 +50,12 @@ CREATE TABLE usuarios_cursos (
     FOREIGN KEY (aula_id) REFERENCES aulas(id) ON DELETE CASCADE,
     FOREIGN KEY (ano_academico_id) REFERENCES anos_academicos(id) ON DELETE CASCADE,
     
-    -- Restricción: Un usuario solo tiene 1 matrícula (Curso + Aula) por cada año lectivo
-    UNIQUE KEY uq_usuario_ano (usuario_id, ano_academico_id)
+    
+    UNIQUE KEY uq_usuario_ano (usuario_id, ano_academico_id) -- Restricción: Un usuario solo tiene 1 matrícula (Curso + Aula) por cada año lectivo
 );
 
 -- 7. Tabla de Asignaturas
-CREATE TABLE asignaturas (
+CREATE TABLE IF NOT EXISTS asignaturas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     curso_id INT NOT NULL,
@@ -61,7 +63,7 @@ CREATE TABLE asignaturas (
 );
 
 -- 8. Tabla de Asignaturas por Alumno (NUEVA: Expediente Académico de Asignaturas)
-CREATE TABLE usuarios_asignaturas (
+CREATE TABLE IF NOT EXISTS usuarios_asignaturas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     alumno_id INT NOT NULL,
     asignatura_id INT NOT NULL,
@@ -77,7 +79,7 @@ CREATE TABLE usuarios_asignaturas (
 );
 
 -- 9. Tabla de Asignación de Profesores (NUEVA: Qué profesor da qué asignatura en qué aula)
-CREATE TABLE profesor_asignatura_aula (
+CREATE TABLE IF NOT EXISTS profesor_asignatura_aula (
     id INT AUTO_INCREMENT PRIMARY KEY,
     profesor_id INT NOT NULL,
     asignatura_id INT NOT NULL,
@@ -93,7 +95,7 @@ CREATE TABLE profesor_asignatura_aula (
 );
 
 -- 10. Tabla de Exámenes (Con control de tiempo)
-CREATE TABLE examenes (
+CREATE TABLE IF NOT EXISTS examenes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(150) NOT NULL,
     con_tiempo_limite BOOLEAN NOT NULL DEFAULT TRUE, -- <-- AÑADIDO: Activa/Desactiva temporizador
@@ -103,7 +105,7 @@ CREATE TABLE examenes (
 );
 
 -- 11. Tabla de Preguntas
-CREATE TABLE preguntas (
+CREATE TABLE IF NOT EXISTS preguntas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     enunciado TEXT NOT NULL,
     examen_id INT NOT NULL,
@@ -111,7 +113,7 @@ CREATE TABLE preguntas (
 );
 
 -- 12. Tabla de Respuestas
-CREATE TABLE respuestas (
+CREATE TABLE IF NOT EXISTS respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     texto TEXT NOT NULL,
     es_correcta TINYINT(1) NULL DEFAULT NULL,
@@ -121,25 +123,54 @@ CREATE TABLE respuestas (
 );
 
 -- 13. Tabla de Intentos de Examen
-CREATE TABLE intentos_examen (
+CREATE TABLE IF NOT EXISTS intentos_examen (
     id INT AUTO_INCREMENT PRIMARY KEY,
     alumno_id INT NOT NULL,
     examen_id INT NOT NULL,
-    nota DECIMAL(4, 2) NOT NULL,
-    tiempo_empleado_segundos INT NULL, -- <-- AÑADIDO: Medir cuánto tardó
-    estado ENUM('finalizado', 'tiempo_agotado') DEFAULT 'finalizado', -- <-- AÑADIDO
-    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ano_academico_id INT NOT NULL, -- <-- AÑADIDO: Año lectivo del intento
+    estado ENUM('en_proceso', 'finalizado', 'tiempo_agotado') NOT NULL DEFAULT 'en_proceso',
+    nota DECIMAL(4, 2) NULL DEFAULT NULL,
+    tiempo_empleado_segundos INT NULL DEFAULT NULL,
+    fecha_inicio DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    fecha_fin DATETIME NULL DEFAULT NULL,
+    
     FOREIGN KEY (alumno_id) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (examen_id) REFERENCES examenes(id) ON DELETE CASCADE
+    FOREIGN KEY (examen_id) REFERENCES examenes(id) ON DELETE CASCADE,
+    FOREIGN KEY (ano_academico_id) REFERENCES anos_academicos(id) ON DELETE CASCADE,
+    
+    UNIQUE KEY uq_alumno_examen_ano (alumno_id, examen_id, ano_academico_id) -- RESTRICCIÓN: Un alumno solo puede iniciar un examen 1 vez por año académico
 );
 
--- 14. Tabla de Respuestas por Alumno (JSON)
-CREATE TABLE respuestas_alumno (
+-- 14. Tabla de Preguntas por Intento
+CREATE TABLE IF NOT EXISTS preguntas_intento (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    intento_id INT NOT NULL UNIQUE,
-    respuestas_json TEXT NOT NULL,
-    FOREIGN KEY (intento_id) REFERENCES intentos_examen(id) ON DELETE CASCADE
+    intento_id INT NOT NULL,
+    pregunta_id INT NOT NULL,
+    
+    FOREIGN KEY (intento_id) REFERENCES intentos_examen(id) ON DELETE CASCADE,
+    FOREIGN KEY (pregunta_id) REFERENCES preguntas(id) ON DELETE CASCADE,
+    
+    UNIQUE KEY uq_intento_pregunta (intento_id, pregunta_id) -- Evita que la misma pregunta se le asigne dos veces en el mismo intento
 );
+
+-- 15. Tabla de Respuestas por Alumno (JSON)
+CREATE TABLE IF NOT EXISTS respuestas_alumno (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    intento_id INT NOT NULL,
+    pregunta_id INT NOT NULL,
+    respuesta_id INT NULL DEFAULT NULL, -- NULL si no la ha respondido aún
+    
+    FOREIGN KEY (intento_id) REFERENCES intentos_examen(id) ON DELETE CASCADE,
+    FOREIGN KEY (pregunta_id) REFERENCES preguntas(id) ON DELETE CASCADE,
+    FOREIGN KEY (respuesta_id) REFERENCES respuestas(id) ON DELETE SET NULL,
+    
+    UNIQUE KEY uq_intento_pregunta_respuesta (intento_id, pregunta_id) -- Un alumno solo responde 1 vez a cada pregunta dentro de un mismo intento
+);
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE usuarios;
+SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO usuarios (nombre, email, password, fecha_nacimiento, role) 
 VALUES (
@@ -149,7 +180,3 @@ VALUES (
     '1983-11-01', 
     'admin'
 );
-
-SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE usuarios;
-SET FOREIGN_KEY_CHECKS = 1;

@@ -94,10 +94,10 @@
                     setTimeout(function() {
                         window.location.href = 'login.html';
                     }, 2000);
-                }, 'json').fail(function(jqXHR) {
+                }, 'json').fail(function(error) {
                     var msg = "Error al intentar cambiar la contraseña.";
-                    if (jqXHR.responseJSON && jqXHR.responseJSON.mensaje) {
-                        msg = jqXHR.responseJSON.mensaje;
+                    if (error.responseJSON && error.responseJSON.mensaje) {
+                        msg = error.responseJSON.mensaje;
                     }
                     mostrarToast(msg, false);
                 });

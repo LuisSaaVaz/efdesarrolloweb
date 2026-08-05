@@ -198,6 +198,63 @@
         </div>
     </div>
 
+    <!-- Modal Detalle de Asignatura -->
+    <div class="modal fade" id="modalDetalleAsignatura" tabindex="-1" aria-labelledby="modalDetalleAsignaturaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalDetalleAsignaturaLabel">
+                        <i class="bi bi-book me-2"></i><span id="detalleNombreAsignatura">Cargando...</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-building me-2"></i>Curso / Nivel:</span>
+                            <strong id="detalleCursoNombre">-</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-calendar3 me-2"></i>Año Académico:</span>
+                            <span id="detalleAnoAcademico" class="badge bg-secondary">-</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-door-open me-2"></i>Aula Asignada:</span>
+                            <span id="detalleAula" class="badge bg-info text-dark">-</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-person-badge me-2"></i>Estado Matrícula:</span>
+                            <span id="detalleEstado" class="badge bg-success">-</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalle del Intento de Examen -->
+    <div class="modal fade" id="modalDetalleHistorico" tabindex="-1" aria-labelledby="modalDetalleHistoricoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-secondary" id="modalDetalleHistoricoLabel">
+                        <i class="bi bi-file-earmark-text me-2"></i>Detalle del Examen
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="bodyModalDetalleHistorico">
+                    <!-- Se llena dinámicamente con JavaScript -->
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ==========================================
          CONTENEDOR DE TOASTS (NOTIFICACIONES)
     =========================================== -->
@@ -223,7 +280,8 @@
     <!-- Scripts Propios -->
     <script src="JS/utils.js"></script>
     <script src="JS/auth.js"></script>
-    <script src="JS/alumno.js"></script>
+    <script src="JS/alumnos/alumno_asignaturas.js"></script>
+    <script src="JS/alumnos/alumno_historico.js"></script>
     <script src="JS/profesor.js"></script>
     <script src="JS/admin.js"></script>
     <script src="JS/app.js"></script>
