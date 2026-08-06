@@ -2,6 +2,7 @@ DELIMITER //
 
 CREATE PROCEDURE GenerarMatriculasAlumnos()
 BEGIN
+    -- 1. DECLARACIÓN DE VARIABLES LOCALES
     DECLARE v_done INT DEFAULT FALSE;
     DECLARE v_usuario_id INT;
     DECLARE v_fecha_nac DATE;
@@ -10,15 +11,19 @@ BEGIN
     DECLARE v_curso INT;
     DECLARE v_aula INT;
     DECLARE v_conteo INT;
-    DECLARE v_estado VARCHAR(20);
+    DECLARE v_max_ano_id INT;
 
-    -- Cursor para recorrer todos los usuarios con rol 'alumno'
+    -- 2. DECLARACIÓN DE CURSORES
     DECLARE cur_alumnos CURSOR FOR 
         SELECT id, fecha_nacimiento 
         FROM usuarios 
         WHERE role = 'alumno' AND fecha_nacimiento IS NOT NULL;
 
+    -- 3. DECLARACIÓN DE HANDLERS
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = TRUE;
+
+    -- LÓGICA DEL PROCEDIMIENTO
+    SELECT MAX(id) INTO v_max_ano_id FROM anos_academicos;
 
     OPEN cur_alumnos;
 
@@ -28,38 +33,24 @@ BEGIN
             LEAVE read_loop;
         END IF;
 
-        -- Calculamos el año académico en el que cumple 3 años (ID 1 = 1960)
         SET v_ano_inicio = YEAR(v_fecha_nac) - 1960;
-        
-        -- Si por edad empezara antes de 1960, ajustamos a 1
         IF v_ano_inicio < 1 THEN
             SET v_ano_inicio = 1;
         END IF;
 
-        SET v_curso = 1; -- Empieza en 1º Infantil (ID 1)
-
-        -- Bucle por cada año académico hasta el 2019-2020 (ID 60)
+        SET v_curso = 1;
         SET v_ano_actual = v_ano_inicio;
-        
-        WHILE v_ano_actual <= 60 AND v_curso <= 10 DO
-            
-            -- Estado: 'cursando' para 2019-2020 (ID 60), 'superado' para los anteriores
-            IF v_ano_actual = 60 THEN
-                SET v_estado = 'cursando';
-            ELSE
-                SET v_estado = 'superado';
-            END IF;
 
-            -- Contar alumnos ya matriculados en ese curso y año para asignar aula (máx 15 por aula)
+        -- CAMBIO AQUÍ: v_curso <= 18 para cubrir de Infantil a Bachillerato
+        WHILE v_ano_actual <= v_max_ano_id AND v_curso <= 18 DO
             SELECT COUNT(*) INTO v_conteo 
             FROM usuarios_cursos 
             WHERE ano_academico_id = v_ano_actual AND curso_id = v_curso;
 
             SET v_aula = FLOOR(v_conteo / 15) + 1;
 
-            -- Insertar registro evitando duplicados
             INSERT IGNORE INTO usuarios_cursos (usuario_id, curso_id, ano_academico_id, aula_id, estado)
-            VALUES (v_usuario_id, v_curso, v_ano_actual, v_aula, v_estado);
+            VALUES (v_usuario_id, v_curso, v_ano_actual, v_aula, 'superado');
 
             SET v_curso = v_curso + 1;
             SET v_ano_actual = v_ano_actual + 1;
@@ -72,8 +63,5 @@ END //
 
 DELIMITER ;
 
--- Ejecutar el procedimiento
 CALL GenerarMatriculasAlumnos();
-
--- Borrar el procedimiento tras la ejecución
 DROP PROCEDURE IF EXISTS GenerarMatriculasAlumnos;

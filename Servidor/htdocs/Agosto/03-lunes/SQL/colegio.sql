@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS preguntas_intento (
     UNIQUE KEY uq_intento_pregunta (intento_id, pregunta_id) -- Evita que la misma pregunta se le asigne dos veces en el mismo intento
 );
 
--- 15. Tabla de Respuestas por Alumno (JSON)
+-- 15. Tabla de Respuestas por Alumno
 CREATE TABLE IF NOT EXISTS respuestas_alumno (
     id INT AUTO_INCREMENT PRIMARY KEY,
     intento_id INT NOT NULL,
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS respuestas_alumno (
 
 
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE usuarios;
+TRUNCATE TABLE intentos_examen;
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO usuarios (nombre, email, password, fecha_nacimiento, role) 

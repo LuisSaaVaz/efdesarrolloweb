@@ -255,6 +255,26 @@
         </div>
     </div>
 
+    <!-- Modal Genérico Reutilizable -->
+    <div class="modal fade" id="modalGenerico" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" id="modalGenericoTamaño">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header text-white" id="modalGenericoHeader">
+                    <h5 class="modal-title fw-bold" id="modalGenericoTitulo">
+                        <!-- Título dinámico -->
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalGenericoCuerpo">
+                    <!-- Contenido inyectado dinámicamente -->
+                </div>
+                <div class="modal-footer" id="modalGenericoFooter">
+                    <!-- Botones inyectados dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ==========================================
          CONTENEDOR DE TOASTS (NOTIFICACIONES)
     =========================================== -->
@@ -283,7 +303,7 @@
     <script src="JS/alumnos/alumno_asignaturas.js"></script>
     <script src="JS/alumnos/alumno_historico.js"></script>
     <script src="JS/profesor.js"></script>
-    <script src="JS/admin.js"></script>
+    <script src="JS/admins/admin_usuarios.js"></script>
     <script src="JS/app.js"></script>
 </body>
 </html>

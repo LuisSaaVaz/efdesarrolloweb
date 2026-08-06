@@ -56,7 +56,6 @@ try {
         $paramsC[] = $ano_id;
         $typesC   .= "i";
     }
-    $sqlCursos .= " ORDER BY c.nombre ASC";
 
     $stmtC = $con->prepare($sqlCursos);
     $stmtC->bind_param($typesC, ...$paramsC);
@@ -65,7 +64,7 @@ try {
     $stmtC->close();
 
     // 3. Asignaturas (Incluyen el nombre del curso para agruparlas y responden a los filtros de Año/Curso)
-    $sqlAsig = "SELECT DISTINCT a.id, a.nombre, c.nombre AS curso_nombre
+    $sqlAsig = "SELECT DISTINCT a.id, a.nombre, c.nombre AS curso_nombre, c.id AS curso_id
                 FROM usuarios_cursos uc 
                 INNER JOIN asignaturas a ON a.curso_id = uc.curso_id 
                 INNER JOIN cursos c ON c.id = a.curso_id
@@ -83,7 +82,9 @@ try {
         $paramsA[] = $curso_id;
         $typesA   .= "i";
     }
-    $sqlAsig .= " ORDER BY c.nombre ASC, a.nombre ASC";
+    
+    // Ahora c.id sí forma parte del SELECT DISTINCT
+    $sqlAsig .= " ORDER BY c.id ASC, a.nombre ASC";
 
     $stmtA = $con->prepare($sqlAsig);
     $stmtA->bind_param($typesA, ...$paramsA);

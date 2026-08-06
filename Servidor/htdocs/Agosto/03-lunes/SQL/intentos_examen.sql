@@ -50,8 +50,8 @@ BEGIN
                     LEAVE examen_loop;
                 END IF;
 
-                -- 1. Generar nota aleatoria entre 5.00 y 10.00 (con 2 decimales)
-                SET v_nota = ROUND(5 + (RAND() * 5), 2);
+                -- 1. Generar nota entera aleatoria entre 5 y 10 (sin decimales)
+                SET v_nota = FLOOR(5 + (RAND() * 6));
 
                 -- 2. Calcular tiempo empleado aleatorio (entre 30s y el límite en segundos)
                 SET v_tiempo_segundos = FLOOR(30 + (RAND() * ((v_duracion_min * 60) - 30)));
